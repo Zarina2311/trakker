@@ -1,15 +1,16 @@
 import React from "react";
-import "./App.css";
+import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
+import "./style.css";
 
-function App() {
+function Home() {
   return (
-    <div className="App">
-      <div>
+    <div className="Home">
+      <Link to="/login">
         <Button className="button2" color="info">
           Log In
         </Button>
-      </div>
+      </Link>
       <h1>Trakker</h1>
       <br />
       <br />
@@ -20,9 +21,11 @@ function App() {
         opportunity
       </h5>
       <br />
-      <Button className="button1">Sign Up - It's Free</Button>
+      <Link to="/signup">
+        <Button className="button1">Sign Up - It's Free</Button>
+      </Link>
     </div>
   );
 }
 
-export default App;
+export default Home;
