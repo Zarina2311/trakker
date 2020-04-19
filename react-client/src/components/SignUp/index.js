@@ -5,6 +5,7 @@ function SignUp() {
   return (
     <div className="SignUp">
       <h1>Trakker</h1>
+      <h2>Welcome</h2>
     </div>
   );
 }
