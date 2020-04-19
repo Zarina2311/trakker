@@ -1,12 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(233, 248, 250);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#root {
+  height: 100%;
 }
 
 h1 {
@@ -16,7 +29,7 @@ h1 {
 }
 
 h3 {
-  color: #8281a0;
+  color: #757494;
   font-family: "Baloo Bhaina 2";
 }
 
