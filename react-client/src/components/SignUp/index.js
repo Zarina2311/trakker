@@ -9,8 +9,7 @@ function SignUp() {
     <div className="SignUp">
       <br />
       <Form className="Form">
-        <h1 className="header">Trakker</h1>
-        <h2>Welcome</h2>
+        <h2 className="header">Welcome</h2>
         <FormGroup>
           <Label>Email</Label>
           <Input type="email" placeholder="Email" />
@@ -19,14 +18,14 @@ function SignUp() {
           <Label>Password</Label>
           <Input type="password" placeholder="Password" />
         </FormGroup>
-        <Button className="btn-lg btn-info btn-block">Sign Up</Button>
+        <Button className="Signup-button btn-lg btn-block">Sign Up</Button>
         <br />
         <div className="text-center pt-3">
           Or Login with your social account
         </div>
         <br />
-        <LinkedInLoginButton className="mt-3 mb-3" />
-        <GoogleLoginButton className="mt-3 mb-3" />
+        <LinkedInLoginButton className="mb-3" />
+        <GoogleLoginButton className="mb-3" />
       </Form>
     </div>
   );
