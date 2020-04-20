@@ -1,4 +1,18 @@
 .Login {
+  background-color: #effcfa;
   height: 100%;
-  background-color: #ffffe4;
+}
+
+.Form {
+  width: 100%;
+  max-width: 330px;
+  margin: auto;
+  height: 100%;
+}
+
+.welcome {
+  color: #515a59;
+  font-family: "Baloo Bhaina 2";
+  text-align: center;
+  padding-top: 1em;
 }

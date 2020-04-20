@@ -1,5 +1,9 @@
 .SignUp {
-  background-color: #f1dfe0;
+  background-color: #f1e4e5;
+  height: 100%;
+}
+
+Form {
   padding-top: 2em;
   width: 100%;
   max-width: 330px;
@@ -8,15 +12,15 @@
   height: 100%;
 }
 
-h1 {
-  color: #945c5f;
+.header {
+  color: #2c6d8d;
   font-family: "Baloo Bhaina 2";
   text-align: center;
   padding-top: 1em;
 }
 
 h2 {
-  color: #945c5f;
+  color: #5a5858;
   font-family: "Baloo Bhaina 2";
   text-align: center;
   padding-top: 1em;
