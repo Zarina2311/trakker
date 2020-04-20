@@ -1,6 +1,7 @@
 .SignUp {
   background-color: #fcfcfc;
   height: 100%;
+  padding: 2em 0.5em;
 }
 
 .Signup-button.Signup-button,
@@ -25,5 +26,5 @@ Form {
   color: #2abebe;
   font-family: "Baloo Bhaina 2";
   text-align: center;
-  padding-top: 2em;
+  padding: 1em 0;
 }

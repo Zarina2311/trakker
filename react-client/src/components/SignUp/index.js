@@ -15,9 +15,7 @@ import "./style.css";
 function SignUp() {
   return (
     <div className="SignUp">
-      <br />
       <Form className="Form">
-        <br />
         <Card>
           <CardBody>
             <h2 className="header">Welcome</h2>

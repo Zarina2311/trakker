@@ -8,21 +8,16 @@ import {
   Label,
   Input,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Login() {
   return (
     <div className="Login">
-      <br />
-      <br />
-      <br />
       <Form className="Form">
-        <br />
         <Card>
           <CardBody>
             <h2 className="welcome">Welcome back</h2>
-            <br />
-            <br />
             <FormGroup>
               <Label>Email</Label>
               <Input type="email" placeholder="Email" />
@@ -31,7 +26,9 @@ function Login() {
               <Label>Password</Label>
               <Input type="password" placeholder="Password" />
             </FormGroup>
-            <Button className="login-button btn-lg btn-block">Log In</Button>
+            <Link to="/board">
+              <Button className="login-button btn-lg btn-block">Log In</Button>
+            </Link>
             <br />
           </CardBody>
         </Card>

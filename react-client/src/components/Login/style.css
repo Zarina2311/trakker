@@ -1,6 +1,7 @@
 .Login {
   background-color: #fcfcfc;
   height: 100%;
+  padding: 4em 0.5em;
 }
 
 .Form {
@@ -14,13 +15,12 @@
   color: #2abebe;
   font-family: "Baloo Bhaina 2";
   text-align: center;
-  padding-top: 1em;
+  padding: 1em 0;
 }
 
-.login-button.login-button,
-.login-button.login-button:active {
+.login-button.login-button {
   background-color: #2abebe;
-  border-color: #2abebe;
+  border: white;
 }
 
 .login-button.login-button:hover {
