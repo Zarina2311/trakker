@@ -18,11 +18,14 @@ function Home() {
       <br />
       <h5>
         Trakker is an efficient tool to organize and keep track of your next job
-        opportunity
+        opportunity.
       </h5>
-      <br />
       <Link to="/signup">
-        <Button className="button1">Sign Up - It's Free</Button>
+        <br />
+        <br />
+        <Button className="button1" color="info">
+          Sign Up - It's Free
+        </Button>
       </Link>
     </div>
   );

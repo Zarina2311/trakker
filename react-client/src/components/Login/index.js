@@ -31,7 +31,7 @@ function Login() {
               <Label>Password</Label>
               <Input type="password" placeholder="Password" />
             </FormGroup>
-            <Button className="btn-lg btn-info btn-block">Log In</Button>
+            <Button className="login-button btn-lg btn-block">Log In</Button>
             <br />
           </CardBody>
         </Card>

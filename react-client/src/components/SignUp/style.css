@@ -1,29 +1,28 @@
 .SignUp {
-  background-color: rgb(241, 233, 250);
+  background-color: #fcfcfc;
   height: 100%;
 }
 
 .Signup-button.Signup-button,
 .Signup-button.Signup-button:active {
-  background-color: rgb(115, 62, 177);
-  border-color: rgb(150, 44, 150);
+  background-color: #2abebe;
+  border-color: #2abebe;
 }
 
 .Signup-button.Signup-button:hover {
-  background-color: rgb(86, 37, 141);
+  background-color: #1ba0a0;
 }
 
 Form {
   padding-top: 2em;
   width: 100%;
   max-width: 330px;
-  padding: 15px;
   margin: auto;
   height: 100%;
 }
 
 .header {
-  color: rgb(108, 57, 167);
+  color: #2abebe;
   font-family: "Baloo Bhaina 2";
   text-align: center;
   padding-top: 2em;

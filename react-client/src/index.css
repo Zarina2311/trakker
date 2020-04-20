@@ -23,30 +23,29 @@ code {
 }
 
 h1 {
-  color: #2c6d8d;
+  color: #2abebe;
   font-size: 45px;
   font-family: "Baloo Bhaina 2";
-  padding-top: 1em;
 }
 
 h3 {
-  color: #757494;
+  color: #68677c;
   font-family: "Baloo Bhaina 2";
 }
 
 h5 {
-  color: #9190a1;
+  color: #6e6d77;
   font-family: "Baloo Bhaina 2";
 }
 
 .button1 {
-  margin-left: 4em;
-  background-color: #d17d83;
+  background-color: #2abebe;
   border: white;
+  width: 200px;
 }
 
 .button2 {
   margin-left: 70em;
-  color: #fff;
-  background-color: #17a2b8;
+  color: white;
+  background-color: #2abebe;
 }
