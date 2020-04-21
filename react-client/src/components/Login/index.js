@@ -26,7 +26,7 @@ function Login() {
               <Label>Password</Label>
               <Input type="password" placeholder="Password" />
             </FormGroup>
-            <Link to="/board">
+            <Link to="/homeboard">
               <Button className="login-button btn-lg btn-block">Log In</Button>
             </Link>
             <br />

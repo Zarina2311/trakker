@@ -1,0 +1,36 @@
+.Cards {
+  background-color: #fcfcfc;
+  height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.flexbox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.flexbox .board {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #28b3b3;
+  padding: 15px;
+}
+
+.flexbox .board .card {
+  padding: 15px 25px;
+  color: #535e5e;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
