@@ -15,10 +15,10 @@ import "./style.css";
 function SignUp() {
   return (
     <div className="SignUp">
-      <Form className="Form">
+      <Form className="SignUp-form">
         <Card>
           <CardBody>
-            <h2 className="header">Welcome</h2>
+            <h2 className="SignUp-header">Welcome</h2>
             <FormGroup>
               <Label>Email</Label>
               <Input type="email" placeholder="Email" />

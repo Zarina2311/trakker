@@ -14,7 +14,7 @@
   background-color: #1ba0a0;
 }
 
-Form {
+.SignUp-form {
   padding-top: 2em;
   width: 100%;
   max-width: 330px;
@@ -22,7 +22,7 @@ Form {
   height: 100%;
 }
 
-.header {
+.SignUp-header {
   color: #2abebe;
   font-family: "Baloo Bhaina 2";
   text-align: center;
