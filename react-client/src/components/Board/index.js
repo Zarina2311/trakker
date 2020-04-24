@@ -12,25 +12,25 @@ const Board = () => {
       id: 0,
       name: "Applied",
       tasks: [
-        { id: 1, content: "test543" },
-        { id: 2, content: "test679" },
+        { id: 1, content: "test1" },
+        { id: 2, content: "test2" },
       ],
     },
     {
       id: 1,
       name: "Phone",
       tasks: [
-        { id: 4, content: "test77" },
-        { id: 5, content: "test55" },
-        { id: 6, content: "hyttt666" },
+        { id: 4, content: "test3" },
+        { id: 5, content: "test4" },
+        { id: 6, content: "test5" },
       ],
     },
     {
       id: 2,
       name: "On Site",
       tasks: [
-        { id: 7, content: "test88" },
-        { id: 8, content: "test3" },
+        { id: 7, content: "test6" },
+        { id: 8, content: "test7" },
       ],
     },
   ]);

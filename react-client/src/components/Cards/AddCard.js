@@ -24,7 +24,11 @@ function AddCard({ addCard }) {
 
   return !isAdd ? (
     <div>
-      <Button className="card-button tn-lg btn-block" onClick={() => showAdd()}>
+      <Button
+        className="card-button tn-lg btn-block"
+        color="info"
+        onClick={() => showAdd()}
+      >
         Add Card
       </Button>
     </div>
