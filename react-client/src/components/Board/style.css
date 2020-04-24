@@ -3,13 +3,13 @@
   height: 100%;
 }
 
-h5 {
+.title {
   font-family: "Baloo Bhaina 2";
   padding-left: 3em;
   padding-top: 2em;
 }
 
-.shapeBoard {
+.shape-board {
   margin: 0 4rem;
   display: flex;
 }
@@ -25,7 +25,7 @@ h5 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.WrapButtonAdd {
+.add-board-button {
   background-color: rgba(255, 255, 255, 0.5);
   margin: 1em;
   padding: 1.5em;
@@ -35,13 +35,13 @@ h5 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.WrapButtonAdd:hover {
+.add-board-button :hover {
   background: rgba(255, 255, 255, 0.7);
   text-decoration: underline;
   cursor: pointer;
 }
 
-.WrapForm {
+.add-board {
   display: inline-block;
   max-width: 100%;
   background: rgba(255, 255, 255, 0.5);
@@ -50,7 +50,7 @@ h5 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.WrapForm .input-card {
+.add-board .input-card {
   max-width: 100%;
   border: none;
   resize: none;
@@ -63,7 +63,7 @@ h5 {
   vertical-align: text-top;
 }
 
-.WrapForm :focus {
+.add-board :focus {
   outline: none;
 }
 

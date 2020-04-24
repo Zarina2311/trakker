@@ -23,13 +23,13 @@ function AddCard({ addCard }) {
   };
 
   return !isAdd ? (
-    <div className="wrap-button">
-      <Button color="info" onClick={() => showAdd()}>
+    <div>
+      <Button className="card-button tn-lg btn-block" onClick={() => showAdd()}>
         Add Card
       </Button>
     </div>
   ) : (
-    <div className="WrapForm">
+    <div className="add-card">
       <form onSubmit={(event) => addMoreTask(event)}>
         <input
           autoFocus

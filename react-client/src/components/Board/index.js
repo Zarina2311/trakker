@@ -4,13 +4,7 @@ import AddCard from "../Cards/AddCard";
 import Card from "../Cards/Card";
 import "./style.css";
 
-// node demo
-const _demoItem = document.createElement("div");
-_demoItem.classList.add("demo-task");
-let _textDemo = "";
-
-// index to insert
-let _indexInsert = -1;
+let indexInsert = -1;
 
 const Board = () => {
   const [boards, setBoards] = useState([
@@ -41,69 +35,32 @@ const Board = () => {
     },
   ]);
 
-  const onDragStart = (e) => {
-    _textDemo = e.target.innerHTML;
-    e.target.classList.add("drag-start");
+  const onDragStart = (event) => {
+    const indexTask = event.target.id;
+    const indexList = event.target.parentNode.dataset.list;
+    event.dataTransfer.setData("indexTask", indexTask);
+    event.dataTransfer.setData("indexList", indexList);
 
-    const indexTask = e.target.id;
-    const indexList = e.target.parentNode.dataset.list;
-    e.dataTransfer.setData("indexTask", indexTask);
-    e.dataTransfer.setData("indexList", indexList);
-
-    e.persist();
+    event.persist();
     setTimeout(() => {
-      e.target.classList.add("hidden-item");
+      event.target.classList.add("hidden-item");
     }, 10);
   };
 
-  const removeBorderBoard = () => {
-    const boardHoverOld = document.getElementsByClassName("border-board")[0];
-    if (boardHoverOld) {
-      boardHoverOld.classList.remove("border-board");
-    }
+  const onDragOver = (event) => {
+    event.preventDefault();
   };
 
-  const onDragOver = (e) => {
-    e.preventDefault();
-    removeBorderBoard();
-    const col = e.target.closest(".col");
-    col.classList.add("border-board");
-
-    const nearItem = e.target.closest(".task");
-    if (nearItem) {
-      const position = nearItem.getBoundingClientRect();
-      if (e.clientY <= position.top + position.height / 2) {
-        nearItem.parentNode.insertBefore(_demoItem, nearItem);
-        _indexInsert = parseInt(nearItem.id);
-
-        // insert text demo
-        const insertDom = setInterval(() => {
-          _demoItem.innerHTML = _textDemo;
-          clearInterval(insertDom);
-        }, 10);
-      } else if (e.clientY > position.bottom - position.height / 2) {
-        nearItem.parentNode.insertBefore(_demoItem, nearItem.nextSibling);
-        _indexInsert = parseInt(nearItem.id) + 1;
-        const insertDom = setInterval(() => {
-          _demoItem.innerHTML = _textDemo;
-          clearInterval(insertDom);
-        }, 10);
-      }
-    }
-  };
-
-  const onDrop = (e) => {
-    e.preventDefault();
-    removeBorderBoard();
-    const indexListTarget = e.target.closest(".col").dataset.list;
-    _demoItem.parentNode.removeChild(_demoItem);
-    const indexTask = e.dataTransfer.getData("indexTask");
-    const indexList = e.dataTransfer.getData("indexList");
+  const onDrop = (event) => {
+    event.preventDefault();
+    const indexListTarget = event.target.closest(".col").dataset.list;
+    const indexTask = event.dataTransfer.getData("indexTask");
+    const indexList = event.dataTransfer.getData("indexList");
 
     const taskPicked = boards[indexList].tasks[indexTask];
 
     const newBoards = [...boards];
-    newBoards[indexListTarget].tasks.splice(_indexInsert, 0, taskPicked);
+    newBoards[indexListTarget].tasks.splice(indexInsert, 0, taskPicked);
     newBoards[indexList].tasks.splice(indexTask, 0);
 
     setBoards(newBoards);
@@ -130,9 +87,9 @@ const Board = () => {
 
   return (
     <div>
-      <h5>My Job Board</h5>
+      <h5 className="title">My Job Board</h5>
       <hr />
-      <div className="shapeBoard">
+      <div className="shape-board">
         {boards.map((board, index) => (
           <div
             className="col"

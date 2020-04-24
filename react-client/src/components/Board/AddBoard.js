@@ -20,11 +20,11 @@ function AddBoard({ addBoard }) {
   };
 
   return !isAdd ? (
-    <div className="WrapButtonAdd col" onClick={showAdd}>
+    <div className="add-board-button" onClick={showAdd}>
       Add Board
     </div>
   ) : (
-    <form className="WrapForm col" onSubmit={addMoreBoard}>
+    <form className="add-board" onSubmit={addMoreBoard}>
       <input
         className="input-card"
         type="text"
