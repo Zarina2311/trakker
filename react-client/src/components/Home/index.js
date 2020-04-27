@@ -28,11 +28,11 @@ function Home() {
       </Link>
       <div>
         <img
-          className="search"
-          src="http://localhost:3000/public/search.png"
+          className="job-search"
+          src="http://localhost:3000/job-search-new.png"
           alt="job-search-image"
-          width="300"
-          height="300"
+          width="310"
+          height="310"
         />
       </div>
     </div>
