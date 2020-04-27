@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-import "./style.css";
+// import search from "./search.png";
 
 function Home() {
   return (
@@ -27,6 +27,15 @@ function Home() {
           Sign Up - It's Free
         </Button>
       </Link>
+      {/* <img src={search} alt="search" width="100" height="50" /> */}
+      <div>
+        <img
+          className="job-search"
+          src="http://localhost:3000/src/search.png"
+          width="300"
+          height="300"
+        />
+      </div>
     </div>
   );
 }
