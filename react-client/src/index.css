@@ -1,7 +1,6 @@
 .Home {
   height: 100%;
   text-align: left;
-  padding-left: 6em;
   padding-top: 2em;
   font-family: "Baloo Bhaina 2";
   background-color: #f6ffff;
@@ -34,6 +33,7 @@ code {
 h1 {
   color: #2abebe;
   font-size: 45px;
+  padding-left: 2em;
   font-family: "Baloo Bhaina 2";
 }
 
@@ -63,7 +63,7 @@ h5 {
 }
 
 .button2 {
-  margin-left: 75em;
+  margin-left: 80em;
   color: white;
   border: white;
   background-color: #2abebe;
