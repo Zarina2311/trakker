@@ -1,10 +1,10 @@
 .Home {
   height: 100%;
   text-align: left;
-  padding-left: 7em;
-  padding-top: 4em;
+  padding-left: 6em;
+  padding-top: 2em;
   font-family: "Baloo Bhaina 2";
-  background-color: #fcfcfc;
+  background-color: #f6ffff;
 }
 
 * {
@@ -38,13 +38,17 @@ h1 {
 }
 
 h3 {
-  color: #4c4897;
+  color: #545199;
+  text-align: center;
+  font-size: 35px;
   font-family: "Baloo Bhaina 2";
+  font-weight: bold;
 }
 
 h5 {
   color: #5e5696;
-  /* color: #3d348d; */
+  font-size: 20px;
+  text-align: center;
   font-family: "Baloo Bhaina 2";
 }
 
@@ -52,15 +56,21 @@ h5 {
   background-color: #2abebe;
   border: white;
   width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
 }
 
 .button2 {
-  margin-left: 70em;
+  margin-left: 75em;
   color: white;
   border: white;
   background-color: #2abebe;
 }
 
 .job-search {
-  margin-left: 45em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

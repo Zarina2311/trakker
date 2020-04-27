@@ -16,25 +16,27 @@ function Home() {
       <h3>Job Search Tracking Just Got Easy</h3>
       <br />
       <h5>
-        Trakker is an efficient tool to organize and keep track of your next job
+        An efficient tool to organize and keep track of your next job
         opportunity
       </h5>
-      <Link to="/signup">
-        <br />
-        <br />
-        <Button className="button1" color="info">
-          Sign Up - It's Free
-        </Button>
-      </Link>
+      <br />
+      <br />{" "}
       <div>
         <img
           className="job-search"
           src="http://localhost:3000/job-search-new.png"
           alt="job-search-image"
-          width="310"
-          height="310"
+          width="210"
+          height="210"
         />
       </div>
+      <br />
+      <Link to="/signup">
+        <Button className="button1" size="lg" color="info">
+          Sign Up - It's Free
+        </Button>
+      </Link>
+      <br />
     </div>
   );
 }
