@@ -17,7 +17,7 @@ function Home() {
       <br />
       <h5>
         Trakker is an efficient tool to organize and keep track of your next job
-        opportunity.
+        opportunity
       </h5>
       <Link to="/signup">
         <br />
