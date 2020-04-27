@@ -32,7 +32,7 @@ function AddBoard({ addBoard }) {
         onChange={(event) => updateNewBoard(event.target.value)}
       />
       <div className="board-button">
-        <Button>Add Board</Button>
+        <Button color="info">Add Board</Button>
       </div>
     </form>
   );
