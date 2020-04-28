@@ -24,7 +24,7 @@ function Home() {
       <div>
         <img
           className="job-search"
-          src="http://localhost:3000/job-search-new.png"
+          src="job-search-new.png"
           alt="job-search-image"
           width="210"
           height="210"
