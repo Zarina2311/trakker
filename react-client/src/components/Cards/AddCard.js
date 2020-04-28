@@ -43,7 +43,8 @@ function AddCard({ addCard }) {
           onChange={(event) => updateNewTask(event.target.value)}
         />
         <br />
-        <Button color="info">Add Card</Button>
+        <Button color="info">Add Card</Button> &nbsp; &nbsp;
+        <Button color="info">Cancel</Button>
       </form>
     </div>
   );

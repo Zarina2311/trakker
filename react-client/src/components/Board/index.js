@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import AddBoard from "../Board/AddBoard";
 import AddCard from "../Cards/AddCard";
 import Card from "../Cards/Card";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
+
+library.add(faTimesCircle);
 
 let indexInsert = -1;
 
@@ -85,6 +90,23 @@ const Board = () => {
     setBoards(newBoards);
   };
 
+  const deleteTaskFromBoard = (boardId, taskId) => {
+    if (window.confirm("Are you sure?")) {
+      let newBoards = [...boards]; // copy the state
+      let newBoard = newBoards.find((board) => board.id === boardId); // find the right board
+      newBoard.tasks = newBoard.tasks.filter((task) => task.id !== taskId); // remove the task
+      setBoards(newBoards); // update the whole state with newBoards
+    }
+  };
+
+  const deleteBoard = (boardId) => {
+    if (window.confirm("Are you sure?")) {
+      let newBoards = [...boards];
+      newBoards = newBoards.filter((board) => board.id !== boardId);
+      setBoards(newBoards);
+    }
+  };
+
   return (
     <div>
       <h5 className="title">My Job Board</h5>
@@ -98,13 +120,21 @@ const Board = () => {
             onDragOver={onDragOver}
             onDrop={onDrop}
           >
-            <p className="title-board">{board.name}</p>
+            <p className="title-board">
+              {board.name}
+              <FontAwesomeIcon
+                className="icon-board"
+                icon="times-circle"
+                onClick={() => deleteBoard(board.id)}
+              />
+            </p>
             {board.tasks.map((task, index) => (
               <Card
                 task={task}
                 key={task.id}
                 index={index}
                 onDragStart={onDragStart}
+                deleteItem={() => deleteTaskFromBoard(board.id, task.id)}
               />
             ))}
             <AddCard addCard={addCard} />

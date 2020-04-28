@@ -7,6 +7,7 @@
   margin-bottom: 0.5rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  position: relative;
 }
 
 .add-card .input-card {
@@ -23,4 +24,10 @@
 
 .add-card .input-card:focus {
   outline: none;
+}
+
+.icon-card {
+  position: absolute;
+  right: 10px;
+  opacity: 0.2;
 }
