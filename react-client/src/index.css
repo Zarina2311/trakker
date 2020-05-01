@@ -1,7 +1,6 @@
 .Home {
   height: 100%;
   text-align: left;
-  padding-top: 2em;
   font-family: "Baloo Bhaina 2";
   background-color: #f6ffff;
 }
@@ -59,13 +58,14 @@ h5 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .button2 {
   margin-left: 80em;
   color: white;
   border: white;
+  margin-top: 3em;
   background-color: #2abebe;
 }
 
