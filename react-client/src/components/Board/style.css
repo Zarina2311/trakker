@@ -9,14 +9,16 @@
   padding-top: 1em;
   text-align: left;
   font-size: 25px;
+  user-select: none;
 }
 
-.shape-board {
+.shape-column {
   margin: 0 4rem;
   display: flex;
 }
 
 .col {
+  user-select: none;
   background: #2abebe;
   margin: 1em 1em;
   color: white;
@@ -28,12 +30,12 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.add-board-button {
+.add-column-button {
   margin: 1em;
   cursor: pointer;
 }
 
-.add-board {
+.add-column {
   display: inline-block;
   max-width: 100%;
   background: #2abebe;
@@ -43,7 +45,7 @@
   margin: 1rem 1rem;
 }
 
-.add-board .input-card {
+.add-column .input-card {
   max-width: 100%;
   border: none;
   resize: none;
@@ -56,11 +58,11 @@
   vertical-align: text-top;
 }
 
-.add-board :focus {
+.add-column :focus {
   outline: none;
 }
 
-.icon-board {
+.icon-column {
   position: absolute;
   right: 10px;
   opacity: 0.3;

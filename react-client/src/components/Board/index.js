@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddBoard from "../Board/AddBoard";
+import AddColumn from "./AddColumn";
 import AddCard from "../Cards/AddCard";
 import Card from "../Cards/Card";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -11,40 +11,40 @@ library.add(faTimesCircle);
 
 let indexInsert = -1;
 
-const Board = () => {
-  const [boards, setBoards] = useState([
+const Column = () => {
+  const [columns, setColumns] = useState([
     {
       id: 0,
       name: "Applied",
       tasks: [
-        { id: 1, content: "test1" },
-        { id: 2, content: "test2" },
+        { id: 1, content: "Google" },
+        { id: 2, content: "Facebook" },
       ],
     },
     {
       id: 1,
       name: "Phone",
       tasks: [
-        { id: 4, content: "test3" },
-        { id: 5, content: "test4" },
-        { id: 6, content: "test5" },
+        { id: 4, content: "Indeed" },
+        { id: 5, content: "Zoom" },
+        { id: 6, content: "Amazon" },
       ],
     },
     {
       id: 2,
       name: "On Site",
       tasks: [
-        { id: 7, content: "test6" },
-        { id: 8, content: "test7" },
+        { id: 7, content: "Netflix" },
+        { id: 8, content: "LinkedIn" },
       ],
     },
   ]);
 
   const onDragStart = (event) => {
-    const indexTask = event.target.id;
-    const indexList = event.target.parentNode.dataset.list;
-    event.dataTransfer.setData("indexTask", indexTask);
-    event.dataTransfer.setData("indexList", indexList);
+    const initialCardIndex = event.target.id;
+    const initialColumnIndex = event.target.parentNode.dataset.columnIndex;
+    event.dataTransfer.setData("initialCardIndex", initialCardIndex);
+    event.dataTransfer.setData("initialColumnIndex", initialColumnIndex);
 
     event.persist();
     setTimeout(() => {
@@ -58,52 +58,57 @@ const Board = () => {
 
   const onDrop = (event) => {
     event.preventDefault();
-    const indexListTarget = event.target.closest(".col").dataset.list;
-    const indexTask = event.dataTransfer.getData("indexTask");
-    const indexList = event.dataTransfer.getData("indexList");
+    const initialColumnIndex = event.dataTransfer.getData("initialColumnIndex");
+    const initialCardIndex = event.dataTransfer.getData("initialCardIndex");
+    const finalColumnIndex = event.target.closest(".col").dataset.columnIndex;
 
-    const taskPicked = boards[indexList].tasks[indexTask];
-
-    const newBoards = [...boards];
-    newBoards[indexListTarget].tasks.splice(indexInsert, 0, taskPicked);
-    newBoards[indexList].tasks.splice(indexTask, 0);
-
-    setBoards(newBoards);
+    const chosenCard = columns[initialColumnIndex].tasks[initialCardIndex];
+    // make a copy because you can't edit react state variables directly
+    const newColumns = [...columns];
+    // insert the chosen card at the specified location in the task array
+    newColumns[finalColumnIndex].tasks.splice(indexInsert, 0, chosenCard);
+    // deletes the card from the old column
+    newColumns[initialColumnIndex].tasks.splice(initialCardIndex, 1);
+    setColumns(newColumns);
   };
 
   const addCard = ({ indexColumn, content }) => {
-    let newBoards = [...boards];
-    newBoards[indexColumn].tasks.push({
+    let newColumns = [...columns];
+    newColumns[indexColumn].tasks.push({
       id: Math.floor(Math.random() * 1000),
       content: content,
     });
-    setBoards(newBoards);
+    setColumns(newColumns);
   };
 
-  const addBoard = ({ name }) => {
-    let newBoards = [...boards];
-    newBoards.push({
-      id: boards.length + 1,
+  const addColumn = ({ name }) => {
+    let newColumns = [...columns];
+    newColumns.push({
+      id: columns.length + 1,
       name: name,
       tasks: [],
     });
-    setBoards(newBoards);
+    setColumns(newColumns);
   };
 
-  const deleteTaskFromBoard = (boardId, taskId) => {
+  const deleteTaskFromColumn = (columnId, taskId) => {
     if (window.confirm("Are you sure?")) {
-      let newBoards = [...boards]; // copy the state
-      let newBoard = newBoards.find((board) => board.id === boardId); // find the right board
-      newBoard.tasks = newBoard.tasks.filter((task) => task.id !== taskId); // remove the task
-      setBoards(newBoards); // update the whole state with newBoards
+      // copy the state
+      let newColumns = [...columns];
+      // find the right column
+      let newColumn = newColumns.find((column) => column.id === columnId);
+      // remove the task
+      newColumn.tasks = newColumn.tasks.filter((task) => task.id !== taskId);
+      // update the whole state with newColumns
+      setColumns(newColumns);
     }
   };
 
-  const deleteBoard = (boardId) => {
+  const deleteColumn = (columnId) => {
     if (window.confirm("Are you sure?")) {
-      let newBoards = [...boards];
-      newBoards = newBoards.filter((board) => board.id !== boardId);
-      setBoards(newBoards);
+      let newColumns = [...columns];
+      newColumns = newColumns.filter((column) => column.id !== columnId);
+      setColumns(newColumns);
     }
   };
 
@@ -111,40 +116,40 @@ const Board = () => {
     <div>
       <h5 className="title">My Job Board</h5>
       <hr />
-      <div className="shape-board">
-        {boards.map((board, index) => (
+      <div className="shape-column">
+        {columns.map((column, index) => (
           <div
             className="col"
-            data-list={index}
-            key={board.id}
+            data-column-index={index}
+            key={column.id}
             onDragOver={onDragOver}
             onDrop={onDrop}
           >
-            <p className="title-board">
-              {board.name}
+            <p className="title-column">
+              {column.name}
               <FontAwesomeIcon
-                className="icon-board"
+                className="icon-column"
                 icon="times-circle"
-                onClick={() => deleteBoard(board.id)}
+                onClick={() => deleteColumn(column.id)}
               />
             </p>
-            {board.tasks.map((task, index) => (
+            {column.tasks.map((task, index) => (
               <Card
                 task={task}
                 key={task.id}
                 index={index}
                 onDragStart={onDragStart}
-                deleteItem={() => deleteTaskFromBoard(board.id, task.id)}
+                deleteItem={() => deleteTaskFromColumn(column.id, task.id)}
               />
             ))}
             <AddCard addCard={addCard} />
             <br />
           </div>
         ))}
-        <AddBoard addBoard={addBoard} />
+        <AddColumn addColumn={addColumn} />
       </div>
     </div>
   );
 };
 
-export default Board;
+export default Column;
