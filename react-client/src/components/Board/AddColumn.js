@@ -22,6 +22,7 @@ function AddColumn({ addColumn }) {
   return isFormShown ? (
     <form className="add-column" onSubmit={handleSubmit}>
       <input
+        autoFocus
         className="input-card"
         type="text"
         placeholder="Enter your column name"

@@ -113,40 +113,43 @@ const Column = () => {
   };
 
   return (
-    <div>
-      <h5 className="title">My Job Board</h5>
-      <hr />
-      <div className="shape-column">
-        {columns.map((column, index) => (
-          <div
-            className="col"
-            data-column-index={index}
-            key={column.id}
-            onDragOver={onDragOver}
-            onDrop={onDrop}
-          >
-            <p className="title-column">
-              {column.name}
-              <FontAwesomeIcon
-                className="icon-column"
-                icon="times-circle"
-                onClick={() => deleteColumn(column.id)}
-              />
-            </p>
-            {column.cards.map((card, index) => (
-              <Card
-                card={card}
-                key={card.id}
-                index={index}
-                onDragStart={onDragStart}
-                deleteItem={() => deleteCardFromColumn(column.id, card.id)}
-              />
-            ))}
-            <AddCard addCard={addCard} />
-            <br />
-          </div>
-        ))}
-        <AddColumn addColumn={addColumn} />
+    <div className="page">
+      <div className="page-top">
+        <h5 className="title">My Job Board</h5>
+      </div>
+      <div className="page-bottom">
+        <div className="columns">
+          {columns.map((column, index) => (
+            <div
+              className="col"
+              data-column-index={index}
+              key={column.id}
+              onDragOver={onDragOver}
+              onDrop={onDrop}
+            >
+              <p className="title-column">
+                {column.name}
+                <FontAwesomeIcon
+                  className="icon-column"
+                  icon="times-circle"
+                  onClick={() => deleteColumn(column.id)}
+                />
+              </p>
+              {column.cards.map((card, index) => (
+                <Card
+                  card={card}
+                  key={card.id}
+                  index={index}
+                  onDragStart={onDragStart}
+                  deleteItem={() => deleteCardFromColumn(column.id, card.id)}
+                />
+              ))}
+              <AddCard addCard={addCard} />
+              <br />
+            </div>
+          ))}
+          <AddColumn addColumn={addColumn} />
+        </div>
       </div>
     </div>
   );

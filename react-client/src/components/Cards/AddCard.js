@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTimes, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
 
-library.add(faTimes, faEdit);
+library.add(faTimes);
 
 function AddCard({ addCard }) {
   const [newCard, setNewCard] = useState("");
