@@ -1,43 +1,47 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
 
 function AddColumn({ addColumn }) {
-  const [newColumn, updateNewColumn] = useState("");
-  const [isAdd, updateIsAdd] = useState(false);
+  const [newColumn, setNewColumn] = useState("");
+  const [isFormShown, setIsFormShown] = useState(false);
 
-  const showAdd = () => {
-    updateIsAdd(!isAdd);
-  };
+  const showForm = () => setIsFormShown(true);
+  const hideForm = () => setIsFormShown(false);
 
-  const addMoreColumn = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (newColumn) {
       addColumn({ name: newColumn });
-      updateNewColumn("");
-      updateIsAdd(false);
+      setNewColumn("");
+      setIsFormShown(false);
     }
   };
 
-  return !isAdd ? (
-    <div className="add-column-button" onClick={showAdd}>
-      <Button outline color="info">
-        Add Column{" "}
-      </Button>
-    </div>
-  ) : (
-    <form className="add-column" onSubmit={addMoreColumn}>
+  return isFormShown ? (
+    <form className="add-column" onSubmit={handleSubmit}>
       <input
         className="input-card"
         type="text"
         placeholder="Enter your column name"
-        onChange={(event) => updateNewColumn(event.target.value)}
+        onChange={(event) => setNewColumn(event.target.value)}
       />
       <div className="column-cancel-button">
         <Button color="info">Add Column</Button> &nbsp; &nbsp;
-        <Button color="info">Cancel</Button>
+        <FontAwesomeIcon
+          className="icon-cancel"
+          icon="times"
+          onClick={hideForm}
+        />
       </div>
     </form>
+  ) : (
+    <div className="add-column-button" onClick={showForm}>
+      <Button outline color="info">
+        Add Column{" "}
+      </Button>
+    </div>
   );
 }
 

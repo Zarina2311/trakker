@@ -6,7 +6,7 @@
 .title {
   font-family: "Baloo Bhaina 2";
   padding-left: 3.5em;
-  padding-top: 1em;
+  padding-top: 1.5em;
   text-align: left;
   font-size: 25px;
   user-select: none;
@@ -66,4 +66,10 @@
   position: absolute;
   right: 10px;
   opacity: 0.3;
+}
+
+.icon-cancel {
+  opacity: 0.6;
+  font-size: larger;
+  color: white;
 }

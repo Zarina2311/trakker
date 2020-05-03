@@ -1,53 +1,57 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./style.css";
+
+library.add(faTimes, faEdit);
 
 function AddCard({ addCard }) {
-  const [newTask, updateNewTask] = useState("");
-  const [isAdd, updateIsAdd] = useState(false);
+  const [newCard, setNewCard] = useState("");
+  const [isFormShown, setIsFormShown] = useState(false);
 
-  const showAdd = () => {
-    updateIsAdd(!isAdd);
-  };
+  const showForm = () => setIsFormShown(true);
+  const hideForm = () => setIsFormShown(false);
 
-  const addMoreTask = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (newTask) {
+    if (newCard) {
       const col = event.target.closest(".col");
       addCard({
-        indexColumn: col.dataset.list,
-        content: newTask,
+        indexColumn: col.dataset.columnIndex,
+        content: newCard,
       });
-      updateNewTask("");
-      updateIsAdd(false);
+      setNewCard("");
+      setIsFormShown(false);
     }
   };
 
-  return !isAdd ? (
-    <div>
-      <Button
-        className="rounded-button tn-lg btn-block"
-        color="info"
-        onClick={() => showAdd()}
-      >
-        Add Card
-      </Button>
-    </div>
+  return isFormShown ? (
+    <form className="add-card" onSubmit={handleSubmit}>
+      <input
+        autoFocus
+        className="input-card"
+        type="text"
+        placeholder="Enter your card name"
+        onChange={(event) => setNewCard(event.target.value)}
+      />
+      <br />
+      <Button color="info">Add Card</Button> &nbsp; &nbsp;
+      <FontAwesomeIcon
+        className="icon-cancel"
+        icon="times"
+        onClick={hideForm}
+      />
+    </form>
   ) : (
-    <div className="add-card">
-      <form onSubmit={(event) => addMoreTask(event)}>
-        <input
-          autoFocus
-          className="input-card"
-          type="text"
-          placeholder="Enter your card name"
-          onChange={(event) => updateNewTask(event.target.value)}
-        />
-        <br />
-        <Button color="info">Add Card</Button> &nbsp; &nbsp;
-        <Button color="info">Cancel</Button>
-      </form>
-    </div>
+    <Button
+      className="rounded-button tn-lg btn-block"
+      color="info"
+      onClick={showForm}
+    >
+      Add Card
+    </Button>
   );
 }
-
 export default AddCard;

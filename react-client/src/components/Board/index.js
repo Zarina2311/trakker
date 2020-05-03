@@ -16,7 +16,7 @@ const Column = () => {
     {
       id: 0,
       name: "Applied",
-      tasks: [
+      cards: [
         { id: 1, content: "Google" },
         { id: 2, content: "Facebook" },
       ],
@@ -24,7 +24,7 @@ const Column = () => {
     {
       id: 1,
       name: "Phone",
-      tasks: [
+      cards: [
         { id: 4, content: "Indeed" },
         { id: 5, content: "Zoom" },
         { id: 6, content: "Amazon" },
@@ -33,7 +33,7 @@ const Column = () => {
     {
       id: 2,
       name: "On Site",
-      tasks: [
+      cards: [
         { id: 7, content: "Netflix" },
         { id: 8, content: "LinkedIn" },
       ],
@@ -62,19 +62,19 @@ const Column = () => {
     const initialCardIndex = event.dataTransfer.getData("initialCardIndex");
     const finalColumnIndex = event.target.closest(".col").dataset.columnIndex;
 
-    const chosenCard = columns[initialColumnIndex].tasks[initialCardIndex];
+    const chosenCard = columns[initialColumnIndex].cards[initialCardIndex];
     // make a copy because you can't edit react state variables directly
     const newColumns = [...columns];
-    // insert the chosen card at the specified location in the task array
-    newColumns[finalColumnIndex].tasks.splice(indexInsert, 0, chosenCard);
+    // insert the chosen card at the specified location in the card array
+    newColumns[finalColumnIndex].cards.splice(indexInsert, 0, chosenCard);
     // deletes the card from the old column
-    newColumns[initialColumnIndex].tasks.splice(initialCardIndex, 1);
+    newColumns[initialColumnIndex].cards.splice(initialCardIndex, 1);
     setColumns(newColumns);
   };
 
   const addCard = ({ indexColumn, content }) => {
     let newColumns = [...columns];
-    newColumns[indexColumn].tasks.push({
+    newColumns[indexColumn].cards.push({
       id: Math.floor(Math.random() * 1000),
       content: content,
     });
@@ -86,19 +86,19 @@ const Column = () => {
     newColumns.push({
       id: columns.length + 1,
       name: name,
-      tasks: [],
+      cards: [],
     });
     setColumns(newColumns);
   };
 
-  const deleteTaskFromColumn = (columnId, taskId) => {
+  const deleteCardFromColumn = (columnId, cardId) => {
     if (window.confirm("Are you sure?")) {
       // copy the state
       let newColumns = [...columns];
       // find the right column
       let newColumn = newColumns.find((column) => column.id === columnId);
-      // remove the task
-      newColumn.tasks = newColumn.tasks.filter((task) => task.id !== taskId);
+      // remove the card
+      newColumn.cards = newColumn.cards.filter((card) => card.id !== cardId);
       // update the whole state with newColumns
       setColumns(newColumns);
     }
@@ -133,13 +133,13 @@ const Column = () => {
                 onClick={() => deleteColumn(column.id)}
               />
             </p>
-            {column.tasks.map((task, index) => (
+            {column.cards.map((card, index) => (
               <Card
-                task={task}
-                key={task.id}
+                card={card}
+                key={card.id}
                 index={index}
                 onDragStart={onDragStart}
-                deleteItem={() => deleteTaskFromColumn(column.id, task.id)}
+                deleteItem={() => deleteCardFromColumn(column.id, card.id)}
               />
             ))}
             <AddCard addCard={addCard} />
