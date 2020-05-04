@@ -1,9 +1,45 @@
 # Trakker
 
-Trakker is a web app to track job search. Users can organize their application submissions, interviews and overall submission progress.
+Trakker is a full-stack web app to track job search. Users can organize their application submissions, interviews and overall job hunt progress.
+The project is written in ReactJS, Node/Express and PostgreSQL.
 
-## To run the app
+## Features include:
 
-### `npm start`
+- Sign Up form
+- Log In form
+- Personal board
+- Add new column
+- Create name for new column
+- Add new card
+- Create name for new card
+- Drag and drop
+- Delete column
+- Delete card
+- Undo new card input
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup Instructions:
+
+### Database
+
+```
+createdb trakker
+run trakker.sql on Postgres
+```
+
+### Express
+
+```
+cd express-server
+npm install
+npm start
+```
+
+### React
+
+```
+cd react-client
+npm install
+npm start
+```
+
+Once both servers are running (Express on port 3001 and React on port 3000), open http://localhost:3000 to view the app in the browser.
