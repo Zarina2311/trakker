@@ -1,43 +1,66 @@
 const express = require("express");
-// const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const TrakkerDatabase = require("./trakker-database");
 
 const DEFAULT_PORT = 3001;
 const PORT = process.env.PORT || DEFAULT_PORT;
-const db = new TrakkerDatabase();
-
+const db = TrakkerDatabase();
 const api = express();
 
-// Middlewares
-// api.use(morgan("tiny"));
-api.use(bodyParser.json());
+api.use(bodyParser.urlencoded({ extended: false }));
 
-// GET board
-api.get("/board", (req, res) =>
-  db.getAllBoards().then((boards) => res.send(boards))
+// to get all columns
+api.get("/user/:user_id", (req, res) =>
+  db
+    .getColumns({
+      user_id: req.params.user_id,
+    })
+    .then((columns) => res.send(columns))
+    .catch((err) => {
+      // TODO figure out which status to send based on the err object
+      res.send([]);
+    })
 );
 
-// POST cards
-api.post("/cards", (req, res) => {
-  db.addCard(req.body)
-    .then((card) => res.send(card))
+// to create a new column
+api.post("/user/:user_id", (req, res) => {
+  db.addColumn({
+    user_id: req.params.user_id,
+    name: req.body.name,
+  })
+    .then((column) => res.send(column))
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.send([]);
     });
 });
 
-// GET cards
-api.get("/cards", (req, res) => db.getCards().then((cards) => res.send(cards)));
+// to get all cards for a column
+api.get("/user/:user_id/:col_id", (req, res) =>
+  db
+    .getCardsForColumn({
+      col_id: req.params.col_id,
+    })
+    .then((cardList) => res.send(cardList))
+    .catch((err) => {
+      console.error(err);
+      res.send([]);
+    })
+);
 
-// sanityCheck will make sure the DB is working before listening
-db.sanityCheck().then(() => {
-  api.listen(PORT, () => {
-    console.log(`
+// to create a card for a column
+api.post("/user/:user_id/:col_id", (req, res) => {
+  db.addCardToColumn({
+    col_id: req.params.col_id,
+    name: req.body.name,
+  })
+    .then((card) => res.send(card))
+    .catch((err) => {
+      console.error(err);
+      res.send([]);
+    });
+});
 
-      trakker express api listening on port ${PORT}
-
-    `);
-  });
+api.listen(PORT, () => {
+  console.log(`trakker express api listening on port ${PORT}`);
 });
