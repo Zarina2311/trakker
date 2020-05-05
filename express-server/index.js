@@ -7,6 +7,11 @@ const PORT = process.env.PORT || DEFAULT_PORT;
 const db = TrakkerDatabase();
 const api = express();
 
+api.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+  next();
+});
 api.use(bodyParser.urlencoded({ extended: false }));
 
 // to get all columns
@@ -18,6 +23,7 @@ api.get("/user/:user_id", (req, res) =>
     .then((columns) => res.send(columns))
     .catch((err) => {
       // TODO figure out which status to send based on the err object
+      console.log("there was an error: \n\n", err);
       res.send([]);
     })
 );
@@ -30,7 +36,7 @@ api.post("/user/:user_id", (req, res) => {
   })
     .then((column) => res.send(column))
     .catch((err) => {
-      console.error(err);
+      console.log("there was an error: \n\n", err);
       res.send([]);
     });
 });
@@ -43,7 +49,7 @@ api.get("/user/:user_id/:col_id", (req, res) =>
     })
     .then((cardList) => res.send(cardList))
     .catch((err) => {
-      console.error(err);
+      console.log("there was an error: \n\n", err);
       res.send([]);
     })
 );
@@ -56,7 +62,7 @@ api.post("/user/:user_id/:col_id", (req, res) => {
   })
     .then((card) => res.send(card))
     .catch((err) => {
-      console.error(err);
+      console.log("there was an error: \n\n", err);
       res.send([]);
     });
 });

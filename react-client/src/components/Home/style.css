@@ -1,0 +1,56 @@
+.Home {
+  height: 100%;
+  text-align: left;
+  font-family: "Baloo Bhaina 2";
+  background-color: #f6ffff;
+}
+
+h1 {
+  color: #2abebe;
+  font-size: 45px;
+  font-family: "Baloo Bhaina 2";
+}
+
+h3 {
+  color: #545199;
+  font-size: 35px;
+  font-family: "Baloo Bhaina 2";
+  font-weight: bold;
+}
+
+h5 {
+  color: #5e5696;
+  font-size: 20px;
+  font-family: "Baloo Bhaina 2";
+}
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  max-width: 120rem;
+  margin: auto;
+}
+
+.content {
+  text-align: center;
+}
+
+.login-button {
+  color: white;
+  border: white;
+  background-color: #2abebe;
+}
+
+.signup-button {
+  background-color: #2abebe;
+  border: white;
+  width: 200px;
+}
+
+.job-search {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

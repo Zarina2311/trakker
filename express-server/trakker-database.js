@@ -1,5 +1,4 @@
 const pgp = require("pg-promise")();
-const dbName = process.env.DB_NAME || "trakker";
 
 const ignoreEmptyResultsError = (err) => {
   if (err.code !== 0) {
@@ -10,8 +9,8 @@ const ignoreEmptyResultsError = (err) => {
 };
 
 module.exports = () => {
-  const connectionString = `postgres://localhost:5432/${dbName}`;
-  const db = pgp(connectionString);
+  const connectionString = process.env.DATABASE_URL;
+  const db = pgp({ connectionString });
 
   console.log("Postgres DB => ", connectionString);
   db.one("SELECT true AS success")
