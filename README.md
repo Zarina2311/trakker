@@ -5,8 +5,8 @@ The project is written in ReactJS, Node/Express and PostgreSQL.
 
 ## Features include:
 
-- Sign Up form
-- Log In form
+- Sign Up form via Auth0
+- Log In form via Auth0
 - Personal board
 - Add new column
 - Create name for new column
