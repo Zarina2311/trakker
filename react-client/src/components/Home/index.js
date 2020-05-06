@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import "./style.css";
 
@@ -8,11 +7,11 @@ function Home() {
     <div className="Home">
       <div className="topbar">
         <h1>Trakker</h1>
-        <Link to="/login">
+        <a href="http://localhost:3001/login">
           <Button className="login-button" color="info">
             Log In
           </Button>
-        </Link>
+        </a>
       </div>
       <div className="content">
         <h3>Job Search Tracking Just Got Easy</h3>
@@ -33,11 +32,11 @@ function Home() {
         />
         <br />
         <br />
-        <Link to="/signup">
+        <a href="http://localhost:3001/login">
           <Button className="signup-button" size="lg" color="info">
             Sign Up - It's Free
-          </Button>
-        </Link>
+          </Button>{" "}
+        </a>
         <br />
       </div>
     </div>
