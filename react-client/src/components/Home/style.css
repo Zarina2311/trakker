@@ -15,7 +15,7 @@ h3 {
   color: #545199;
   font-size: 35px;
   font-family: "Baloo Bhaina 2";
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 h5 {
@@ -44,9 +44,16 @@ h5 {
 }
 
 .signup-button {
-  background-color: #2abebe;
+  color: white;
   border: white;
+  background-color: #2abebe;
   width: 200px;
+}
+
+.signup-button.info {
+  color: #fff;
+  background-color: #2abebe;
+  border-color: #fff;
 }
 
 .job-search {

@@ -61,7 +61,7 @@ const Board = ({ userId = 1 }) => {
     const finalColumnIndex = event.target.closest(".col").dataset.columnIndex;
 
     const chosenCard = columns[initialColumnIndex].cards[initialCardIndex];
-    // make a copy because you can't edit react state variables directly
+    // makes a copy
     const newColumns = [...columns];
     // insert the card in the new column
     newColumns[finalColumnIndex].cards.splice(indexInsert, 0, chosenCard);
