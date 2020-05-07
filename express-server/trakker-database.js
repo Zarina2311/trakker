@@ -9,7 +9,8 @@ const ignoreEmptyResultsError = (err) => {
 };
 
 module.exports = () => {
-  const connectionString = process.env.DATABASE_URL;
+  const connectionString =
+    process.env.DATABASE_URL || "postgres://localhost:5432/trakker";
   const db = pgp({ connectionString });
 
   console.log("Postgres DB => ", connectionString);

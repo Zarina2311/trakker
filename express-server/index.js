@@ -1,39 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const TrakkerDatabase = require("./trakker-database");
-const { auth } = require("express-openid-connect");
-const { requiresAuth } = require("express-openid-connect");
-const dotenv = require("dotenv").config();
-
-//added custom code for auth
-const config = {
-  required: false,
-  auth0Logout: true,
-  appSession: {
-    secret: process.env.APP_SESSION,
-  },
-  baseURL: process.env.BASE_URL,
-  clientID: process.env.CLIENT_ID,
-  issuerBaseURL: process.env.ISSUER_BASE_URL,
-};
+const morgan = require("morgan");
 
 const DEFAULT_PORT = 3001;
 const PORT = process.env.PORT || DEFAULT_PORT;
 const db = TrakkerDatabase();
 const api = express();
-
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-api.use(auth(config));
-
-// req.isAuthenticated is provided from the auth router
-api.get("/", (req, res) => {
-  res.send(req.isAuthenticated() ? "Logged in" : "Logged out");
-});
-
-//requiresAuth middleware for routes that require authentication
-api.get("/profile", requiresAuth(), (req, res) => {
-  res.send(JSON.stringify(req.openid.user));
-});
 
 api.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
