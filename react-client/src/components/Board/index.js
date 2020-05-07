@@ -1,27 +1,38 @@
 import React, { useState, useEffect } from "react";
-import AddColumn from "./AddColumn";
-import Column from "../Column";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { Redirect } from "react-router-dom";
+import { Button } from "reactstrap";
+import AddColumn from "./AddColumn";
+import Column from "../Column";
 import { getColumns } from "../../api-fetcher";
+import { useAuth0 } from "../../utils/react-auth0-spa";
 import "./style.css";
 
 library.add(faTimesCircle);
 
 let indexInsert = -1;
-const Board = ({ userId = 1 }) => {
+const Board = () => {
   const [columns, setColumns] = useState([]);
+  const { isAuthenticated, logout, user } = useAuth0();
 
   useEffect(() => {
-    getColumns({ userId }).then((_columns) =>
-      setColumns(_columns.map((col) => ({ ...col, cards: [] })))
-    );
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    if (user) {
+      const userId = user.sub;
+      getColumns({ userId }).then((_columns) =>
+        setColumns(_columns.map((col) => ({ ...col, cards: [] })))
+      );
+    }
+  }, [user]);
+
+  if (!isAuthenticated) {
+    return <Redirect to="/" />;
+  }
 
   const addColumn = ({ name }) => {
     // TODO add column via api, then refetch columns
     // optimistic update
-    setColumns([...columns, { name, id: Math.random(), cards: [] }]); // mock
+    setColumns([...columns, { name, id: Math.random(), cards: [] }]);
   };
 
   const deleteColumn = (columnId) => {
@@ -73,7 +84,19 @@ const Board = ({ userId = 1 }) => {
   return (
     <div className="page">
       <div className="page-top">
-        <h5 className="title">My Job Board</h5>
+        <h5 className="Board-title">
+          {user && (
+            <img
+              src={user.picture}
+              style={{ borderRadius: "100%", marginRight: "1em" }}
+              width="50"
+            />
+          )}
+          {user ? user.given_name + "'s" : "My "} Board
+        </h5>
+        <Button onClick={logout} color="info">
+          Log Out
+        </Button>
       </div>
       <div className="page-bottom">
         <div className="columns">

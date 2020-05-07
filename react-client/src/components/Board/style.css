@@ -5,14 +5,20 @@
   flex-direction: column;
 }
 
-.title {
+.Board-title {
   font-family: "Baloo Bhaina 2";
-  padding: 1.5em 3.5em;
-  text-align: left;
   font-size: 25px;
+  padding: 0;
   user-select: none;
   line-height: 1;
   margin: 0;
+}
+
+.page-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 3.5em;
 }
 
 .page-bottom {
