@@ -7,6 +7,7 @@ The project is written in ReactJS, Node/Express and PostgreSQL.
 
 - Sign Up form via Auth0
 - Log In form via Auth0
+- Log Out via Auth0
 - Personal board
 - Add new column
 - Create name for new column
