@@ -18,7 +18,10 @@ function Home() {
         <div>
           <Button
             className="login-button"
-            color="info"
+            style={{
+              backgroundColor: "#2abebe",
+              border: "white",
+            }}
             onClick={() => loginWithRedirect({})}
           >
             Log In
@@ -47,7 +50,7 @@ function Home() {
         <Button
           className="signup-button"
           size="lg"
-          color="info"
+          style={{ backgroundColor: "#2abebe", border: "white" }}
           onClick={() => loginWithRedirect({})}
         >
           Sign Up - It's Free
@@ -64,11 +67,11 @@ function Home() {
           <h5>Get organized. Follow job hunt through every stage. </h5>
           <h5>
             Keep track of your job submissions and their progress one column and
-            card at a time:
+            card at a time
           </h5>
           <br />
           <br />
-          <p>1. Create a column and give it a name</p>
+          <p>Create a column and give it a name</p>
           <img
             className="new-column"
             src="new-column.png"
@@ -80,9 +83,7 @@ function Home() {
           <br />
           <br />
           <br />
-          <p>
-            2. Create cards of the companies and positions you've applied to
-          </p>
+          <p>Create cards of the companies and positions you've applied to</p>
           <img
             src="new-card.png"
             alt="create-new-card"
@@ -93,7 +94,7 @@ function Home() {
           <br />
           <br />
           <br />
-          <p>3. Drag and drop each card according to your job hunt progress</p>
+          <p>Drag and drop each card according to your job hunt progress</p>
           <img
             src="applied.png"
             alt="drag-n-drop-feature"
@@ -114,6 +115,11 @@ function Home() {
             width="300"
             style={{ borderRadius: "6%" }}
           />
+          <br />
+          <br />
+          <br />
+          <br />
+          <h3>Make your job hunt easier with Trakker! </h3>
           <br />
           <br />
           <br />

@@ -37,16 +37,8 @@ h5 {
   text-align: center;
 }
 
-.login-button {
-  color: white;
-  border: white;
-  background-color: #2abebe;
-}
-
 .signup-button {
   color: white;
-  border: white;
-  background-color: #2abebe;
   width: 200px;
 }
 
@@ -68,7 +60,7 @@ h5 {
 
 p {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 23px;
-  color: #342ea1;
-  font-weight: bolder;
+  font-size: 20px;
+  color: #433e9e;
+  font-weight: bold;
 }

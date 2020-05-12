@@ -94,7 +94,13 @@ const Board = () => {
           )}
           {user ? user.given_name + "'s" : "My "} Board
         </h5>
-        <Button onClick={logout} color="info">
+        <Button
+          onClick={logout}
+          style={{
+            backgroundColor: "#2abebe",
+            border: "white",
+          }}
+        >
           Log Out
         </Button>
       </div>

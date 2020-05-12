@@ -9,7 +9,6 @@
   cursor: pointer;
   position: relative;
 
-  /* css tricks ellipses */
   max-width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
