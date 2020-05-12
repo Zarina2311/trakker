@@ -50,7 +50,7 @@ function Home() {
           color="info"
           onClick={() => loginWithRedirect({})}
         >
-          Sign Up
+          Sign Up - It's Free
         </Button>
         <br />
         <br />
@@ -61,13 +61,14 @@ function Home() {
           <br />
           <h3>How it works</h3>
           <br />
+          <h5>Get organized. Follow job hunt through every stage. </h5>
           <h5>
             Keep track of your job submissions and their progress one column and
             card at a time:
           </h5>
           <br />
           <br />
-          <h5>1. Create a column and give it a name</h5>
+          <p>1. Create a column and give it a name</p>
           <img
             className="new-column"
             src="new-column.png"
@@ -78,9 +79,10 @@ function Home() {
           <br />
           <br />
           <br />
-          <h5>
+          <br />
+          <p>
             2. Create cards of the companies and positions you've applied to
-          </h5>
+          </p>
           <img
             src="new-card.png"
             alt="create-new-card"
@@ -90,9 +92,8 @@ function Home() {
           <br />
           <br />
           <br />
-          <h5>
-            3. Drag and drop each card according to your job hunt progress
-          </h5>
+          <br />
+          <p>3. Drag and drop each card according to your job hunt progress</p>
           <img
             src="applied.png"
             alt="drag-n-drop-feature"
@@ -113,6 +114,7 @@ function Home() {
             width="300"
             style={{ borderRadius: "6%" }}
           />
+          <br />
           <br />
           <br />
           <br />
