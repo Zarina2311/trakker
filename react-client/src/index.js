@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import Home from "./components/Home";
 import Board from "./components/Board";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import history from "./utils/history";
 import { Auth0Provider } from "./utils/react-auth0-spa";
 import config from "./auth_config.json";
+import "./index.css";
 
 // A function that routes the user to the right place after login
 const onRedirectCallback = (appState) => {

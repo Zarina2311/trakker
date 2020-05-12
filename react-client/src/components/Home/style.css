@@ -1,5 +1,5 @@
 .Home {
-  height: 100%;
+  /* height: 100%; */
   text-align: left;
   font-family: "Baloo Bhaina 2";
   background-color: #f6ffff;
@@ -19,6 +19,12 @@ h3 {
 }
 
 h5 {
+  color: #5e5696;
+  font-size: 20px;
+  font-family: "Baloo Bhaina 2";
+}
+
+h4 {
   color: #5e5696;
   font-size: 20px;
   font-family: "Baloo Bhaina 2";
