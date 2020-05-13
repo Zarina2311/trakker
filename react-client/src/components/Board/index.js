@@ -16,6 +16,9 @@ const Board = () => {
   const [columns, setColumns] = useState([]);
   const { isAuthenticated, logout, user } = useAuth0();
 
+  const userPhoto = user ? user.picture : "/blank_photo.png";
+  const boardName = user && user.given_name ? user.given_name + "'s" : "My ";
+
   useEffect(() => {
     if (user) {
       const userId = user.sub;
@@ -87,12 +90,12 @@ const Board = () => {
         <h5 className="Board-title">
           {user && (
             <img
-              src={user.picture}
+              src={userPhoto}
               style={{ borderRadius: "100%", marginRight: "1em" }}
               width="50"
             />
           )}
-          {user ? user.given_name + "'s" : "My "} Board
+          {boardName} Board
         </h5>
         <Button
           onClick={logout}
