@@ -21,8 +21,8 @@ const Board = () => {
 
   useEffect(() => {
     if (user) {
-      const userId = user.sub;
-      getColumns({ userId }).then((_columns) =>
+      const auth0_id = user.sub;
+      getColumns({ auth0_id }).then((_columns) =>
         setColumns(_columns.map((col) => ({ ...col, cards: [] })))
       );
     }

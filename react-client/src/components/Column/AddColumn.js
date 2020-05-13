@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
+import api from "../../api-fetcher";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
 
@@ -13,6 +14,7 @@ function AddColumn({ addColumn }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (newColumn) {
+      api.addColumn({ name: newColumn, auth0_id: 1 });
       addColumn({ name: newColumn });
       setNewColumn("");
       setIsFormShown(false);

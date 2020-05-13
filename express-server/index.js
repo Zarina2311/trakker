@@ -16,11 +16,9 @@ api.use((req, res, next) => {
 api.use(bodyParser.urlencoded({ extended: false }));
 
 // to get all columns
-api.get("/user/:user_id", (req, res) =>
+api.get("/user/:auth0_id", (req, res) =>
   db
-    .getColumns({
-      user_id: req.params.user_id,
-    })
+    .getColumns({ auth0_id: req.params.auth0_id })
     .then((columns) => res.send(columns))
     .catch((err) => {
       // TODO figure out which status to send based on the err object
@@ -30,9 +28,9 @@ api.get("/user/:user_id", (req, res) =>
 );
 
 // to create a new column
-api.post("/user/:user_id", (req, res) => {
+api.post("/user/:auth0_id", (req, res) => {
   db.addColumn({
-    user_id: req.params.user_id,
+    auth0_id: req.params.auth0_id,
     name: req.body.name,
   })
     .then((column) => res.send(column))
@@ -43,7 +41,7 @@ api.post("/user/:user_id", (req, res) => {
 });
 
 // to get all cards for a column
-api.get("/user/:user_id/:col_id", (req, res) =>
+api.get("/user/:auth0_id/:col_id", (req, res) =>
   db
     .getCardsForColumn({
       col_id: req.params.col_id,
@@ -56,7 +54,7 @@ api.get("/user/:user_id/:col_id", (req, res) =>
 );
 
 // to create a card for a column
-api.post("/user/:user_id/:col_id", (req, res) => {
+api.post("/user/:auth0_id/:col_id", (req, res) => {
   db.addCardToColumn({
     col_id: req.params.col_id,
     name: req.body.name,

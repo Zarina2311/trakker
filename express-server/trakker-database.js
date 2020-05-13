@@ -18,7 +18,7 @@ module.exports = () => {
     .then((res) => `Test query succeeded: ${res.success}`)
     .then(console.log);
 
-  const getColumns = ({ user_id }) =>
+  const getColumns = ({ auth0_id }) =>
     db
       .many(
         `
@@ -26,21 +26,21 @@ module.exports = () => {
         id,
         name
       FROM col
-      WHERE col.user_id = $1
+      WHERE col.auth0_id = $1
     `,
-        [user_id]
+        [auth0_id]
       )
       .catch(ignoreEmptyResultsError);
 
-  const addColumn = ({ user_id, name }) =>
+  const addColumn = ({ auth0_id, name }) =>
     db
       .many(
         `
-      INSERT INTO col(user_id, name) 
+      INSERT INTO col(auth0_id, name) 
       VALUES ($1, $2)
       RETURNING *
     `,
-        [user_id, name]
+        [auth0_id, name]
       )
       .catch(ignoreEmptyResultsError);
 

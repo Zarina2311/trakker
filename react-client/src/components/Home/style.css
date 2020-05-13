@@ -23,6 +23,13 @@ h5 {
   font-family: "Baloo Bhaina 2";
 }
 
+h4 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  color: #433e9e;
+  font-weight: bold;
+}
+
 .topbar {
   display: flex;
   flex-direction: row;
@@ -56,11 +63,4 @@ h5 {
 
 .description {
   background-color: #dffafa;
-}
-
-p {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 20px;
-  color: #433e9e;
-  font-weight: bold;
 }

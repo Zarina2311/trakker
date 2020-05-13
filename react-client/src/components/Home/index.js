@@ -64,16 +64,15 @@ function Home() {
           <br />
           <h3>How it works</h3>
           <br />
-          <h5>Get organized. Follow job hunt through every stage. </h5>
           <h5>
             Keep track of your job submissions and their progress one column and
             card at a time
           </h5>
           <br />
           <br />
-          <p>Create a column and give it a name</p>
+          <h4>Create a column and give it a name</h4>
+          <br />
           <img
-            className="new-column"
             src="new-column.png"
             alt="create-new-column"
             width="300"
@@ -83,7 +82,8 @@ function Home() {
           <br />
           <br />
           <br />
-          <p>Create cards of the companies and positions you've applied to</p>
+          <h4>Create cards of the companies and positions you've applied to</h4>
+          <br />
           <img
             src="new-card.png"
             alt="create-new-card"
@@ -94,7 +94,8 @@ function Home() {
           <br />
           <br />
           <br />
-          <p>Drag and drop each card according to your job hunt progress</p>
+          <h4>Drag and drop each card according to your job hunt progress</h4>
+          <br />
           <img
             src="applied.png"
             alt="drag-n-drop-feature"

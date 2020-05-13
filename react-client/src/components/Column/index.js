@@ -22,7 +22,7 @@ const Column = ({
 }) => {
   useEffect(() => {
     getCardsForColumn({
-      userId: 1,
+      auth0_id: 1,
       columnId: id,
     }).then((_cards) => updateCards(_cards));
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
