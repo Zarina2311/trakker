@@ -32,8 +32,8 @@ export function addColumn({ auth0_id, name }) {
     .catch((error) => console.log("error", error));
 }
 
-export function addCard({ auth0_id, name }) {
-  return fetch(`${API_ROOT}/user/${auth0_id}`, {
+export function addCard({ auth0_id, name, columnId }) {
+  return fetch(`${API_ROOT}/user/${auth0_id}/${columnId}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -46,8 +46,8 @@ export function addCard({ auth0_id, name }) {
 }
 
 //DELETE
-export function deleteColumn({ columnId }) {
-  return fetch(`${API_ROOT}/user${columnId}`, {
+export function deleteColumn({ auth0_id, columnId }) {
+  return fetch(`${API_ROOT}/user/${auth0_id}/${columnId}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -58,8 +58,8 @@ export function deleteColumn({ columnId }) {
     .catch((error) => console.log("error", error));
 }
 
-export function deleteCard({ cardId }) {
-  return fetch(`${API_ROOT}/user/${cardId}`, {
+export function deleteCard({ auth0_id, columnId, cardId }) {
+  return fetch(`${API_ROOT}/user/${auth0_id}/${columnId}/${cardId}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
