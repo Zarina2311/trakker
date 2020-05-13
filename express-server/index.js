@@ -66,6 +66,32 @@ api.post("/user/:auth0_id/:col_id", (req, res) => {
     });
 });
 
+// to delete a column
+api.delete("/user/:auth0_id/:col_id", (req, res) =>
+  db
+    .deleteColumn({
+      col_id: req.params.col_id,
+    })
+    .then((ok) => res.send(ok))
+    .catch((err) => {
+      console.log("there was an error: \n\n", err);
+      res.send([]);
+    })
+);
+
+// to delete a card
+api.delete("/user/:auth0_id/:col_id/:card_id", (req, res) =>
+  db
+    .deleteCard({
+      card_id: req.params.card_id,
+    })
+    .then((ok) => res.send(ok))
+    .catch((err) => {
+      console.log("there was an error: \n\n", err);
+      res.send([]);
+    })
+);
+
 api.listen(PORT, () => {
   console.log(`trakker express api listening on port ${PORT}`);
 });

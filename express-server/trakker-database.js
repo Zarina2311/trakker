@@ -71,10 +71,22 @@ module.exports = () => {
       )
       .catch(ignoreEmptyResultsError);
 
+  const deleteColumn = ({ col_id }) =>
+    db
+      .one(`DELETE FROM col WHERE col.id = $1`, [col_id])
+      .catch(ignoreEmptyResultsError);
+
+  const deleteCard = ({ card_id }) =>
+    db
+      .one(`DELETE FROM card WHERE card.id = $1`, [card_id])
+      .catch(ignoreEmptyResultsError);
+
   return {
     getColumns,
     addColumn,
     addCardToColumn,
     getCardsForColumn,
+    deleteColumn,
+    deleteCard,
   };
 };
