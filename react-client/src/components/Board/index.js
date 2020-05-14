@@ -1,62 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";
 import { Button } from "reactstrap";
 import AddColumn from "./AddColumn";
 import Column from "../Column";
-import { getColumns } from "../../api-fetcher";
-import { useAuth0 } from "../../utils/react-auth0-spa";
 import "./style.css";
+import useBoard from "../../useBoard";
 
 library.add(faTimesCircle);
 
-let indexInsert = -1;
 const Board = () => {
-  const [columns, setColumns] = useState([]);
-  const { isAuthenticated, logout, user } = useAuth0();
-
-  const userPhoto = user ? user.picture : "/blank_photo.png";
-  const boardName = user && user.given_name ? user.given_name + "'s" : "My ";
-
-  useEffect(() => {
-    if (user) {
-      const auth0_id = user.sub;
-      getColumns({ auth0_id }).then((_columns) =>
-        setColumns(_columns.map((col) => ({ ...col, cards: [] })))
-      );
-    }
-  }, [user]);
+  const {
+    columns,
+    addColumn,
+    moveCard,
+    isAuthenticated,
+    logout,
+    user,
+  } = useBoard();
 
   if (!isAuthenticated) {
     return <Redirect to="/" />;
   }
 
-  const addColumn = ({ name }) => {
-    // TODO add column via api, then refetch columns
-    // optimistic update
-    setColumns([...columns, { name, id: Math.random(), cards: [] }]);
-  };
-
-  const deleteColumn = (columnId) => {
-    if (window.confirm("Are you sure?")) {
-      // TODO delete column via API, then refetch columns
-      // optimistic update
-      setColumns([...columns].filter((column) => column.id !== columnId));
-    }
-  };
-
-  const updateColumnCards = (columnIndex, cards) => {
-    const newColumns = [...columns];
-    newColumns[columnIndex].cards = cards;
-    setColumns(newColumns);
-  };
+  const userPhoto = user ? user.picture : "";
+  const boardName =
+    user && user.given_name ? user.given_name + "'s Board" : "My Board";
 
   const onDragStart = (event) => {
-    const initialCardIndex = event.target.id;
-    const initialColumnIndex = event.target.parentNode.dataset.columnIndex;
-    event.dataTransfer.setData("initialCardIndex", initialCardIndex);
-    event.dataTransfer.setData("initialColumnIndex", initialColumnIndex);
+    const initialCardId = event.target.id;
+    const initialColumnId = event.target.parentNode.dataset.columnId;
+    event.dataTransfer.setData("initialCardId", initialCardId);
+    event.dataTransfer.setData("initialColumnId", initialColumnId);
 
     event.persist();
     setTimeout(() => {
@@ -70,40 +46,30 @@ const Board = () => {
 
   const onDrop = (event) => {
     event.preventDefault();
-    const initialColumnIndex = event.dataTransfer.getData("initialColumnIndex");
-    const initialCardIndex = event.dataTransfer.getData("initialCardIndex");
-    const finalColumnIndex = event.target.closest(".col").dataset.columnIndex;
+    const initialColumnId = event.dataTransfer.getData("initialColumnId");
+    const initialCardId = event.dataTransfer.getData("initialCardId");
+    const finalColumnId = event.target.closest(".col").dataset.columnId;
 
-    const chosenCard = columns[initialColumnIndex].cards[initialCardIndex];
-    // makes a copy
-    const newColumns = [...columns];
-    // insert the card in the new column
-    newColumns[finalColumnIndex].cards.splice(indexInsert, 0, chosenCard);
-    // delete the card from the old column
-    newColumns[initialColumnIndex].cards.splice(initialCardIndex, 1);
-    setColumns(newColumns);
+    moveCard({
+      cardId: initialCardId,
+      columnId: initialColumnId,
+      newColumnId: finalColumnId,
+    });
   };
 
   return (
     <div className="page">
       <div className="page-top">
         <h5 className="Board-title">
-          {user && (
-            <img
-              src={userPhoto}
-              style={{ borderRadius: "100%", marginRight: "1em" }}
-              width="50"
-            />
-          )}
-          {boardName} Board
+          <img
+            alt=""
+            src={userPhoto}
+            style={{ borderRadius: "100%", marginRight: "1em" }}
+            width="50"
+          />
+          {boardName}
         </h5>
-        <Button
-          onClick={logout}
-          style={{
-            backgroundColor: "#2abebe",
-            border: "white",
-          }}
-        >
+        <Button onClick={logout} color="info">
           Log Out
         </Button>
       </div>
@@ -111,16 +77,13 @@ const Board = () => {
         <div className="columns">
           {columns.map((column, index) => (
             <Column
-              cards={column.cards}
               key={column.id}
               id={column.id}
               name={column.name}
-              columnIndex={index}
+              columnId={index}
               onDragOver={onDragOver}
               onDragStart={onDragStart}
-              onDeleteButtonClick={() => deleteColumn(column.id)}
               onDrop={onDrop}
-              updateCards={(cards) => updateColumnCards(index, cards)}
             />
           ))}
           <AddColumn addColumn={addColumn} />

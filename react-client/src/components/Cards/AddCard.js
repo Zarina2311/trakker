@@ -17,11 +17,7 @@ function AddCard({ addCard }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (newCard) {
-      const col = event.target.closest(".col");
-      addCard({
-        indexColumn: col.dataset.columnIndex,
-        content: newCard,
-      });
+      addCard(newCard);
       setNewCard("");
       setIsFormShown(false);
     }

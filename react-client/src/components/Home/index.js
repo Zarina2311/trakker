@@ -73,6 +73,7 @@ function Home() {
           <h4>Create a column and give it a name</h4>
           <br />
           <img
+            className="new-column"
             src="new-column.png"
             alt="create-new-column"
             width="300"
