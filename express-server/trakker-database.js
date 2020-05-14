@@ -2,6 +2,7 @@ const pgp = require("pg-promise")();
 
 const ignoreEmptyResultsError = (err) => {
   if (err.code !== 0) {
+    console.log(err);
     throw new Error(err);
   } else {
     return [];
@@ -71,6 +72,18 @@ module.exports = () => {
       )
       .catch(ignoreEmptyResultsError);
 
+  const moveCard = ({ card_id, new_col_id }) =>
+    db
+      .many(
+        `
+        UPDATE card
+        SET col_id = $2
+        WHERE card.id = $1
+      `,
+        [card_id, new_col_id]
+      )
+      .catch(ignoreEmptyResultsError);
+
   const deleteColumn = ({ col_id }) =>
     db
       .one(`DELETE FROM col WHERE col.id = $1`, [col_id])
@@ -88,5 +101,6 @@ module.exports = () => {
     getCardsForColumn,
     deleteColumn,
     deleteCard,
+    moveCard,
   };
 };
