@@ -8,6 +8,10 @@ h1 {
   color: #2abebe;
   font-size: 45px;
   font-family: "Baloo Bhaina 2";
+  flex-grow: 1;
+  line-height: 1;
+  padding-top: 20px;
+  padding-left: 10px;
 }
 
 h3 {
@@ -33,7 +37,7 @@ h4 {
 .topbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 2rem 4rem;
   max-width: 120rem;
@@ -44,9 +48,15 @@ h4 {
   text-align: center;
 }
 
-.signup-button {
+.signup-button.signup-button {
   color: white;
   width: 200px;
+  background-color: #2abebe;
+  border: white;
+}
+
+.signup-button.signup-button:hover {
+  background-color: #228a8a;
 }
 
 .signup-button.info {
@@ -63,4 +73,13 @@ h4 {
 
 .description {
   background-color: #dffafa;
+}
+
+.login-button.login-button {
+  background-color: #2abebe;
+  border: white;
+}
+
+.login-button.login-button:hover {
+  background-color: #228a8a;
 }

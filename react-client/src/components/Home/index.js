@@ -14,19 +14,16 @@ function Home() {
   return (
     <div className="Home">
       <div className="topbar">
-        <h1>Trakker</h1>
-        <div>
-          <Button
-            className="login-button"
-            style={{
-              backgroundColor: "#2abebe",
-              border: "white",
-            }}
-            onClick={() => loginWithRedirect({})}
-          >
-            Log In
-          </Button>
-        </div>
+        <img
+          className="main-logo"
+          src="main-logo.png"
+          alt="logo-trakker"
+          width="50"
+        />
+        <h1 className="h1">Trakker</h1>
+        <Button className="login-button" onClick={() => loginWithRedirect({})}>
+          Log In
+        </Button>
       </div>
       <div className="content">
         <h3>Job Search Tracking Just Got Easy</h3>
@@ -50,7 +47,7 @@ function Home() {
         <Button
           className="signup-button"
           size="lg"
-          style={{ backgroundColor: "#2abebe", border: "white" }}
+          // style={{ backgroundColor: "#2abebe", border: "white" }}
           onClick={() => loginWithRedirect({})}
         >
           Sign Up - It's Free
