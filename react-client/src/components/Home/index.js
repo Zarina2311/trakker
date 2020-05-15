@@ -47,7 +47,6 @@ function Home() {
         <Button
           className="signup-button"
           size="lg"
-          // style={{ backgroundColor: "#2abebe", border: "white" }}
           onClick={() => loginWithRedirect({})}
         >
           Sign Up - It's Free
