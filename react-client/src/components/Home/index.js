@@ -14,12 +14,7 @@ function Home() {
   return (
     <div className="Home">
       <div className="topbar">
-        <img
-          className="main-logo"
-          src="main-logo.png"
-          alt="logo-trakker"
-          width="50"
-        />
+        <img src="main-logo.png" alt="logo-trakker" width="50" />
         <h1 className="h1">Trakker</h1>
         <Button className="login-button" onClick={() => loginWithRedirect({})}>
           Log In
