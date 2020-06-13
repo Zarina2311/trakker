@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
-
-library.add(faTimes);
 
 function AddCard({ addCard }) {
   const [newCard, setNewCard] = useState("");
@@ -36,7 +33,7 @@ function AddCard({ addCard }) {
       <Button color="info">Add Card</Button> &nbsp; &nbsp;
       <FontAwesomeIcon
         className="icon-cancel"
-        icon="times"
+        icon={faTimes}
         onClick={hideForm}
       />
     </form>
