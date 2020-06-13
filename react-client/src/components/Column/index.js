@@ -1,13 +1,10 @@
 import React from "react";
 import AddCard from "../Cards/AddCard";
 import Card from "../Cards";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useBoard from "../../useBoard";
 import "./style.css";
-
-library.add(faTimesCircle);
 
 const Column = ({ id, name, onDragOver, onDragStart, onDrop }) => {
   const { getCards, addCard, deleteCard, deleteColumn } = useBoard();
@@ -24,7 +21,7 @@ const Column = ({ id, name, onDragOver, onDragStart, onDrop }) => {
         {name}
         <FontAwesomeIcon
           className="icon-column"
-          icon="times-circle"
+          icon={faTimesCircle}
           onClick={() => deleteColumn(id)}
         />
       </p>

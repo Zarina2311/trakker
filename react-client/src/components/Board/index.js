@@ -1,14 +1,10 @@
 import React from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";
 import { Button } from "reactstrap";
 import AddColumn from "./AddColumn";
 import Column from "../Column";
 import "./style.css";
 import useBoard from "../../useBoard";
-
-library.add(faTimesCircle);
 
 const Board = () => {
   const {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
 
 function AddColumn({ addColumn }) {
@@ -32,7 +33,7 @@ function AddColumn({ addColumn }) {
         <Button color="info">Add Column</Button> &nbsp; &nbsp;
         <FontAwesomeIcon
           className="icon-cancel"
-          icon="times"
+          icon={faTimes}
           onClick={hideForm}
         />
       </div>
