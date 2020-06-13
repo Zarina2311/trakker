@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
 
-function AddColumn({ addColumn }) {
+function AddColumn({ addColumn, isFormShownDefault = false }) {
   const [newColumn, setNewColumn] = useState("");
-  const [isFormShown, setIsFormShown] = useState(false);
+  const [isFormShown, setIsFormShown] = useState(isFormShownDefault);
 
   const showForm = () => setIsFormShown(true);
   const hideForm = () => setIsFormShown(false);
@@ -28,18 +29,18 @@ function AddColumn({ addColumn }) {
         placeholder="Enter your column name"
         onChange={(event) => setNewColumn(event.target.value)}
       />
-      <div className="column-cancel-button">
+      <div>
         <Button color="info">Add Column</Button> &nbsp; &nbsp;
         <FontAwesomeIcon
           className="icon-cancel"
-          icon="times"
+          icon={faTimes}
           onClick={hideForm}
         />
       </div>
     </form>
   ) : (
-    <div className="add-column-button" onClick={showForm}>
-      <Button outline color="info">
+    <div className="add-column-button">
+      <Button outline color="info" onClick={showForm}>
         Add Column{" "}
       </Button>
     </div>
