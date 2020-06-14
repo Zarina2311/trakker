@@ -29,7 +29,6 @@ function Home() {
         </h5>
         <br />
         <br />
-        <br />
         <img
           className="job-search"
           src="job-search.png"
@@ -37,8 +36,6 @@ function Home() {
           width="210"
           height="210"
         />
-        <br />
-        <br />
         <Button
           className="signup-button"
           size="lg"
@@ -46,10 +43,6 @@ function Home() {
         >
           Sign Up - It's Free
         </Button>
-        <br />
-        <br />
-        <br />
-        <br />
         <div className="description">
           <br />
           <br />
@@ -70,22 +63,15 @@ function Home() {
             width="300"
             style={{ borderRadius: "8%" }}
           />
-          <br />
-          <br />
-          <br />
-          <br />
           <h4>Create cards of the companies and positions you've applied to</h4>
           <br />
           <img
+            className="new-card"
             src="new-card.png"
             alt="create-new-card"
             width="300"
             style={{ borderRadius: "6%" }}
           />
-          <br />
-          <br />
-          <br />
-          <br />
           <h4>Drag and drop each card according to your job hunt progress</h4>
           <br />
           <img

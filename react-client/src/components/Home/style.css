@@ -53,6 +53,7 @@ h4 {
   width: 200px;
   background-color: #2abebe;
   border: white;
+  margin-bottom: 55px;
 }
 
 .signup-button.signup-button:hover {
@@ -69,6 +70,7 @@ h4 {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 45px;
 }
 
 .description {
@@ -82,4 +84,12 @@ h4 {
 
 .login-button.login-button:hover {
   background-color: #228a8a;
+}
+
+.new-column {
+  margin-bottom: 70px;
+}
+
+.new-card {
+  margin-bottom: 70px;
 }
