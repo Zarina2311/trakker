@@ -31,7 +31,6 @@ describe("Board", () => {
     );
 
     const titleOnPage = container.querySelector(".Board-title").textContent;
-
     expect(titleOnPage).toEqual("user's name");
   });
 
@@ -48,7 +47,6 @@ describe("Board", () => {
     );
 
     const photoOnPage = container.querySelector(".Board-title img").src;
-
     expect(photoOnPage).toBe("http://userphoto/");
   });
 
@@ -65,7 +63,6 @@ describe("Board", () => {
     );
 
     const logOutButton = container.querySelector(".page-top button");
-
     expect(logOutButton).toBeInTheDocument();
   });
 
@@ -82,7 +79,6 @@ describe("Board", () => {
     );
 
     const logOutButton = container.querySelector(".page-top button");
-
     expect(logOutButton).toBeInTheDocument();
   });
 

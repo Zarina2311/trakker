@@ -5,9 +5,7 @@ import AddCard from "./AddCard";
 describe("AddCard", () => {
   test("should show Add Card button", () => {
     const { getByText } = render(<AddCard />);
-
     const element = getByText("Add Card");
-
     expect(element).toBeInTheDocument();
   });
 

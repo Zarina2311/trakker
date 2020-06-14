@@ -8,7 +8,6 @@ describe("AddColumn", () => {
 
     // button inside of the element with the class add-column-button
     const element = container.querySelector(".add-column-button button");
-
     expect(element).toBeInTheDocument();
   });
 

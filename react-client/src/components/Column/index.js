@@ -6,10 +6,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useBoard from "../../useBoard";
 import "./style.css";
 
-const Column = ({ id, name, onDragOver, onDragStart, onDrop }) => {
-  const { getCards, addCard, deleteCard, deleteColumn } = useBoard();
-  const cards = getCards(id);
-
+export const Column = ({
+  id,
+  name,
+  onDragOver,
+  onDragStart,
+  onDrop,
+  addCard,
+  deleteCard,
+  deleteColumn,
+  cards,
+}) => {
   return (
     <div
       className="col"
@@ -19,11 +26,10 @@ const Column = ({ id, name, onDragOver, onDragStart, onDrop }) => {
     >
       <p className="title-column">
         {name}
-        <FontAwesomeIcon
-          className="icon-column"
-          icon={faTimesCircle}
-          onClick={() => deleteColumn(id)}
-        />
+
+        <span className="icon-column" onClick={() => deleteColumn(id)}>
+          <FontAwesomeIcon icon={faTimesCircle} />
+        </span>
       </p>
       {cards.map((card) => (
         <Card
@@ -40,4 +46,22 @@ const Column = ({ id, name, onDragOver, onDragStart, onDrop }) => {
   );
 };
 
-export default Column;
+const Connector = ({ id, name, onDragOver, onDragStart, onDrop }) => {
+  const { getCards, addCard, deleteCard, deleteColumn } = useBoard();
+  const cards = getCards(id);
+  return (
+    <Column
+      id={id}
+      name={name}
+      onDragOver={onDragOver}
+      onDragStart={onDragStart}
+      onDrop={onDrop}
+      addCard={addCard}
+      deleteCard={deleteCard}
+      deleteColumn={deleteColumn}
+      cards={cards}
+    />
+  );
+};
+
+export default Connector;
