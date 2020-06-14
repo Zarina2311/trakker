@@ -4,9 +4,9 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
 
-function AddCard({ addCard }) {
+function AddCard({ addCard, isFormShownDefault = false }) {
   const [newCard, setNewCard] = useState("");
-  const [isFormShown, setIsFormShown] = useState(false);
+  const [isFormShown, setIsFormShown] = useState(isFormShownDefault);
 
   const showForm = () => setIsFormShown(true);
   const hideForm = () => setIsFormShown(false);
