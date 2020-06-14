@@ -1,43 +1,105 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import AddColumn from "./AddColumn";
+import { Board } from "./index";
 
-describe("AddColumn", () => {
-  test("should show Add Column button by default", () => {
-    const { container } = render(<AddColumn />);
+describe("Board", () => {
+  test("should render without an error", () => {
+    const { container } = render(
+      <Board
+        columns={[]}
+        addColumn={() => {}}
+        moveCard={() => {}}
+        logout={() => {}}
+        userPhoto=""
+        boardName=""
+      />
+    );
 
-    // button inside of the element with the class add-column-button
-    const element = container.querySelector(".add-column-button button");
-
-    expect(element).toBeInTheDocument();
+    expect(container).toBeInTheDocument();
   });
 
-  test("should show the form after user clicks Add Column", () => {
-    const { container } = render(<AddColumn />);
-    const button = container.querySelector(".add-column-button button");
-    button.click();
+  test("should render user's name on the board", () => {
+    const { container } = render(
+      <Board
+        columns={[]}
+        addColumn={() => {}}
+        moveCard={() => {}}
+        logout={() => {}}
+        userPhoto=""
+        boardName="user's name"
+      />
+    );
 
-    setTimeout(() => {
-      const element = container.querySelector(".add-column");
-      expect(element).toBeInTheDocument();
-    }, 500);
+    const titleOnPage = container.querySelector(".Board-title").textContent;
+
+    expect(titleOnPage).toEqual("user's name");
   });
 
-  test("should show form if isFormShown is true", () => {
-    const { container } = render(<AddColumn isFormShownDefault={true} />);
-    const element = container.querySelector(".add-column");
-    expect(element).toBeInTheDocument();
+  test("should render user's photo on the board", () => {
+    const { container } = render(
+      <Board
+        columns={[]}
+        addColumn={() => {}}
+        moveCard={() => {}}
+        logout={() => {}}
+        userPhoto="http://userphoto/"
+        boardName=""
+      />
+    );
+
+    const photoOnPage = container.querySelector(".Board-title img").src;
+
+    expect(photoOnPage).toBe("http://userphoto/");
   });
 
-  test("should show input field", () => {
-    const { container } = render(<AddColumn isFormShownDefault={true} />);
-    const element = container.querySelector(".input-card");
-    expect(element).toBeInTheDocument();
+  test("should render a Log Out button", () => {
+    const { container } = render(
+      <Board
+        columns={[]}
+        addColumn={() => {}}
+        moveCard={() => {}}
+        logout={() => {}}
+        userPhoto=""
+        boardName=""
+      />
+    );
+
+    const logOutButton = container.querySelector(".page-top button");
+
+    expect(logOutButton).toBeInTheDocument();
   });
 
-  test("should show Cancel icon button", () => {
-    const { container } = render(<AddColumn isFormShownDefault={true} />);
-    const element = container.querySelector(".icon-cancel");
-    expect(element).toBeInTheDocument();
+  test("should render a Log Out button", () => {
+    const { container } = render(
+      <Board
+        columns={[]}
+        addColumn={() => {}}
+        moveCard={() => {}}
+        logout={() => {}}
+        userPhoto=""
+        boardName=""
+      />
+    );
+
+    const logOutButton = container.querySelector(".page-top button");
+
+    expect(logOutButton).toBeInTheDocument();
+  });
+
+  test("should log out from the page when user clicks Log Out button", () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <Board
+        columns={[]}
+        addColumn={() => {}}
+        moveCard={() => {}}
+        logout={spy}
+        userPhoto=""
+        boardName=""
+      />
+    );
+
+    container.querySelector(".page-top button").click();
+    expect(spy).toBeCalled();
   });
 });

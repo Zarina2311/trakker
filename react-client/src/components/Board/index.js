@@ -6,24 +6,14 @@ import Column from "../Column";
 import "./style.css";
 import useBoard from "../../useBoard";
 
-const Board = () => {
-  const {
-    columns,
-    addColumn,
-    moveCard,
-    isAuthenticated,
-    logout,
-    user,
-  } = useBoard();
-
-  if (!isAuthenticated) {
-    return <Redirect to="/" />;
-  }
-
-  const userPhoto = user ? user.picture : "";
-  const boardName =
-    user && user.given_name ? user.given_name + "'s Board" : "My Board";
-
+export const Board = ({
+  columns,
+  addColumn,
+  moveCard,
+  logout,
+  userPhoto,
+  boardName,
+}) => {
   const onDragStart = (event) => {
     const initialCardId = event.target.id;
     const initialColumnId = event.target.parentNode.dataset.columnId;
@@ -89,4 +79,37 @@ const Board = () => {
   );
 };
 
-export default Board;
+const Connector = () => {
+  const {
+    columns,
+    addColumn,
+    moveCard,
+    isAuthenticated,
+    logout,
+    user,
+  } = useBoard();
+
+  if (!isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
+  const userPhoto = user ? user.picture : "";
+  const boardName =
+    user && user.given_name ? user.given_name + "'s Board" : "My Board";
+
+  return (
+    <Board
+      columns={columns}
+      columns={columns}
+      addColumn={addColumn}
+      moveCard={moveCard}
+      isAuthenticated={isAuthenticated}
+      logout={logout}
+      user={user}
+      userPhoto={userPhoto}
+      boardName={boardName}
+    />
+  );
+};
+
+export default Connector;
