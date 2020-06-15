@@ -100,7 +100,6 @@ const Connector = () => {
   return (
     <Board
       columns={columns}
-      columns={columns}
       addColumn={addColumn}
       moveCard={moveCard}
       isAuthenticated={isAuthenticated}
