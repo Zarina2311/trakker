@@ -4,7 +4,7 @@
   background-color: #f6ffff;
 }
 
-h1 {
+.h1 {
   color: #2abebe;
   font-size: 45px;
   font-family: "Baloo Bhaina 2";
@@ -14,24 +14,30 @@ h1 {
   padding-left: 10px;
 }
 
-h3 {
+.call-to-action {
   color: #342ea1;
   font-size: 38px;
   font-family: "Baloo Bhaina 2";
   font-weight: bolder;
 }
 
-h5 {
+.main-text {
+  color: #342ea1;
+  font-size: 38px;
+  font-family: "Baloo Bhaina 2";
+  font-weight: bolder;
+  margin-bottom: 16px;
+}
+
+.short-description {
   color: #433694;
   font-size: 20px;
   font-family: "Baloo Bhaina 2";
+  margin-bottom: 60px;
 }
 
-h4 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 20px;
-  color: #433e9e;
-  font-weight: bold;
+.image {
+  margin-bottom: 60px;
 }
 
 .topbar {
@@ -92,4 +98,12 @@ h4 {
 
 .new-card {
   margin-bottom: 70px;
+}
+
+.app-explanation {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  color: #433e9e;
+  font-weight: bold;
+  margin-bottom: 20px;
 }

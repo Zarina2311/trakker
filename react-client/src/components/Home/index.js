@@ -15,14 +15,11 @@ export function Home({ loginWithRedirect }) {
         </Button>
       </div>
       <div className="content">
-        <h3>Job Search Tracking Just Got Easy</h3>
-        <br />
-        <h5>
+        <h3 className="main-text">Job Search Tracking Just Got Easy</h3>
+        <h5 className="short-description">
           An efficient tool to organize and keep track of your next job
           opportunity
         </h5>
-        <br />
-        <br />
         <img
           className="job-search"
           src="job-search.png"
@@ -40,16 +37,14 @@ export function Home({ loginWithRedirect }) {
         <div className="description">
           <br />
           <br />
-          <h3>How it works</h3>
-          <br />
-          <h5>
+          <h3 className="main-text">How it works</h3>
+          <h5 className="short-description">
             Keep track of your job submissions and their progress one column and
             card at a time
           </h5>
-          <br />
-          <br />
-          <h4>Create a column and give it a name</h4>
-          <br />
+          <h4 className="app-explanation">
+            Create a column and give it a name
+          </h4>
           <img
             className="new-column"
             src="new-column.png"
@@ -57,8 +52,9 @@ export function Home({ loginWithRedirect }) {
             width="300"
             style={{ borderRadius: "8%" }}
           />
-          <h4>Create cards of the companies and positions you've applied to</h4>
-          <br />
+          <h4 className="app-explanation">
+            Create cards of the companies and positions you've applied to
+          </h4>
           <img
             className="new-card"
             src="new-card.png"
@@ -66,9 +62,11 @@ export function Home({ loginWithRedirect }) {
             width="300"
             style={{ borderRadius: "6%" }}
           />
-          <h4>Drag and drop each card according to your job hunt progress</h4>
-          <br />
+          <h4 className="app-explanation">
+            Drag and drop each card according to your job hunt progress
+          </h4>
           <img
+            className="image"
             src="applied.png"
             alt="drag-n-drop-feature"
             width="300"
@@ -76,6 +74,7 @@ export function Home({ loginWithRedirect }) {
           />{" "}
           &nbsp; &nbsp;
           <img
+            className="image"
             src="phone-interview.png"
             alt="drag-n-drop-feature"
             width="300"
@@ -83,17 +82,15 @@ export function Home({ loginWithRedirect }) {
           />{" "}
           &nbsp; &nbsp;
           <img
+            className="image"
             src="onsite-interview.png"
             alt="drag-n-drop-feature"
             width="300"
             style={{ borderRadius: "6%" }}
           />
-          <br />
-          <br />
-          <br />
-          <br />
-          <h3>Make your job hunt easier with Trakker! </h3>
-          <br />
+          <h3 className="call-to-action">
+            Make your job hunt easier with Trakker!
+          </h3>
           <br />
           <br />
         </div>
