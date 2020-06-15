@@ -17,9 +17,11 @@ api.use((req, res, next) => {
 api.use(bodyParser.urlencoded({ extended: false }));
 
 // to get all columns
-api.get("/user/:auth0_id", (req, res) =>
+api.get("/user/:auth0_id/column", (req, res) =>
   db
-    .getColumns({ auth0_id: req.params.auth0_id })
+    .getColumns({
+      auth0_id: req.params.auth0_id,
+    })
     .then((columns) => res.send(columns))
     .catch((err) => {
       // TODO figure out which status to send based on the err object
@@ -29,7 +31,7 @@ api.get("/user/:auth0_id", (req, res) =>
 );
 
 // to create a new column
-api.post("/user/:auth0_id", (req, res) => {
+api.post("/user/:auth0_id/column", (req, res) => {
   console.log("body: ", req.body);
   return db
     .addColumn({
@@ -44,7 +46,7 @@ api.post("/user/:auth0_id", (req, res) => {
 });
 
 // to get all cards for a column
-api.get("/user/:auth0_id/:col_id", (req, res) =>
+api.get("/user/:auth0_id/column/:col_id", (req, res) =>
   db
     .getCardsForColumn({
       col_id: req.params.col_id,
@@ -57,7 +59,7 @@ api.get("/user/:auth0_id/:col_id", (req, res) =>
 );
 
 // to create a card for a column
-api.post("/user/:auth0_id/:col_id", (req, res) => {
+api.post("/user/:auth0_id/column/:col_id/card", (req, res) => {
   return db
     .addCardToColumn({
       col_id: req.params.col_id,
@@ -70,8 +72,21 @@ api.post("/user/:auth0_id/:col_id", (req, res) => {
     });
 });
 
+// to delete a column
+api.delete("/user/:auth0_id/column/:col_id", (req, res) =>
+  db
+    .deleteColumn({
+      col_id: req.params.col_id,
+    })
+    .then((ok) => res.send(ok))
+    .catch((err) => {
+      console.log("there was an error: \n\n", err);
+      res.send([]);
+    })
+);
+
 // to move a card
-api.put("/user/:auth0_id/:col_id/:card_id", (req, res) => {
+api.put("/user/:auth0_id/card/:card_id", (req, res) => {
   return db
     .moveCard({
       card_id: req.params.card_id,
@@ -84,21 +99,8 @@ api.put("/user/:auth0_id/:col_id/:card_id", (req, res) => {
     });
 });
 
-// to delete a column
-api.delete("/user/:auth0_id/:col_id", (req, res) =>
-  db
-    .deleteColumn({
-      col_id: req.params.col_id,
-    })
-    .then((ok) => res.send(ok))
-    .catch((err) => {
-      console.log("there was an error: \n\n", err);
-      res.send([]);
-    })
-);
-
 // to delete a card
-api.delete("/user/:auth0_id/:col_id/:card_id", (req, res) =>
+api.delete("/user/:auth0_id/card/:card_id", (req, res) =>
   db
     .deleteCard({
       card_id: req.params.card_id,
