@@ -4,13 +4,7 @@ import { Redirect } from "react-router-dom";
 import { useAuth0 } from "../../utils/react-auth0-spa";
 import "./style.css";
 
-function Home() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
-
-  if (isAuthenticated) {
-    return <Redirect to="/board" />;
-  }
-
+export function Home({ loginWithRedirect }) {
   return (
     <div className="Home">
       <div className="topbar">
@@ -108,4 +102,14 @@ function Home() {
   );
 }
 
-export default Home;
+const Connector = () => {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+
+  if (isAuthenticated) {
+    return <Redirect to="/board" />;
+  }
+
+  return <Home loginWithRedirect={loginWithRedirect} />;
+};
+
+export default Connector;
