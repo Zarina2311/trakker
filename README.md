@@ -2,7 +2,7 @@
 
 Trakker is a full-stack web app to track job search. Users can organize their application submissions, interviews and overall job hunt progress.
 
-You can find the project here: https://job-trakker.herokuapp.com/
+You can find the project here: [Trakker](https://job-trakker.herokuapp.com/).
 
 The project is written in React.js, Node.js, Express.js and PostgreSQL.
 
