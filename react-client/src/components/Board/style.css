@@ -75,10 +75,12 @@
   position: absolute;
   right: 10px;
   opacity: 0.3;
+  cursor: pointer;
 }
 
 .icon-cancel {
   opacity: 0.6;
   font-size: larger;
   color: white;
+  cursor: pointer;
 }
